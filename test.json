@@ -1,0 +1,292 @@
+{
+  "meta": {
+    "estimated_count": 1,
+    "limit": 100,
+    "next": "/api/v2/contest/?resource_id=2&start__gt=2021-06-03T16%3A31%3A37&order_by=start&username=imreallyjohn&api_key=a959cb12328ccc719dff701bb2b7d520f2f8d70c&limit=100&offset=100",
+    "offset": 0,
+    "previous": null,
+    "total_count": null
+  },
+  "objects": [
+    {
+      "duration": 864000,
+      "end": "2021-06-14T09:30:00",
+      "event": "June Challenge 2021 (Rated for Div 3)",
+      "href": "https://www.codechef.com/JUNE21",
+      "id": 26473531,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-06-04T09:30:00"
+    },
+    {
+      "duration": 9000,
+      "end": "2021-06-20T18:30:00",
+      "event": "June Cook-Off 2021",
+      "href": "https://www.codechef.com/COOK130",
+      "id": 26473536,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-06-20T16:00:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2021-06-26T17:00:00",
+      "event": "June Lunchtime 2021",
+      "href": "https://www.codechef.com/LTIME97",
+      "id": 26473527,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-06-26T14:00:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2021-06-27T13:30:00",
+      "event": "June CodeChef Starters 2021",
+      "href": "https://www.codechef.com/START5",
+      "id": 26473549,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-06-27T10:30:00"
+    },
+    {
+      "duration": 864000,
+      "end": "2021-07-12T09:30:00",
+      "event": "July Challenge 2021",
+      "href": "https://www.codechef.com/JULY21",
+      "id": 26473520,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-07-02T09:30:00"
+    },
+    {
+      "duration": 9000,
+      "end": "2021-07-18T18:30:00",
+      "event": "July Cook-Off 2021",
+      "href": "https://www.codechef.com/COOK131",
+      "id": 26473537,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-07-18T16:00:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2021-07-25T13:30:00",
+      "event": "July CodeChef Starters 2021",
+      "href": "https://www.codechef.com/START6",
+      "id": 26473548,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-07-25T10:30:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2021-07-31T17:00:00",
+      "event": "July Lunchtime 2021",
+      "href": "https://www.codechef.com/LTIME98",
+      "id": 26473526,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-07-31T14:00:00"
+    },
+    {
+      "duration": 864000,
+      "end": "2021-08-16T09:30:00",
+      "event": "August Challenge 2021",
+      "href": "https://www.codechef.com/AUG21",
+      "id": 26473532,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-08-06T09:30:00"
+    },
+    {
+      "duration": 9000,
+      "end": "2021-08-22T18:30:00",
+      "event": "August Cook-Off 2021",
+      "href": "https://www.codechef.com/COOK132",
+      "id": 26473538,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-08-22T16:00:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2021-08-28T17:00:00",
+      "event": "August Lunchtime 2021",
+      "href": "https://www.codechef.com/LTIME99",
+      "id": 26473529,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-08-28T14:00:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2021-08-29T13:30:00",
+      "event": "August CodeChef Starters 2021",
+      "href": "https://www.codechef.com/START7",
+      "id": 26473547,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-08-29T10:30:00"
+    },
+    {
+      "duration": 864000,
+      "end": "2021-09-13T09:30:00",
+      "event": "September Challenge 2021",
+      "href": "https://www.codechef.com/SEPT21",
+      "id": 26473521,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-09-03T09:30:00"
+    },
+    {
+      "duration": 9000,
+      "end": "2021-09-19T18:30:00",
+      "event": "September Cook-Off 2021",
+      "href": "https://www.codechef.com/COOK133",
+      "id": 26473539,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-09-19T16:00:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2021-09-25T17:00:00",
+      "event": "September Lunchtime 2021",
+      "href": "https://www.codechef.com/LTIME100",
+      "id": 26473533,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-09-25T14:00:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2021-09-26T13:30:00",
+      "event": "September CodeChef Starters 2021",
+      "href": "https://www.codechef.com/START8",
+      "id": 26473546,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-09-26T10:30:00"
+    },
+    {
+      "duration": 864000,
+      "end": "2021-10-11T09:30:00",
+      "event": "October Challenge 2021",
+      "href": "https://www.codechef.com/OCT21",
+      "id": 26473525,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-10-01T09:30:00"
+    },
+    {
+      "duration": 9000,
+      "end": "2021-10-24T18:30:00",
+      "event": "October Cook-Off 2021",
+      "href": "https://www.codechef.com/COOK134",
+      "id": 26473540,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-10-24T16:00:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2021-10-30T17:00:00",
+      "event": "October Lunchtime 2021",
+      "href": "https://www.codechef.com/LTIME101",
+      "id": 26473517,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-10-30T14:00:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2021-10-31T13:30:00",
+      "event": "October CodeChef Starters 2021",
+      "href": "https://www.codechef.com/START9",
+      "id": 26473545,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-10-31T10:30:00"
+    },
+    {
+      "duration": 864000,
+      "end": "2021-11-15T09:30:00",
+      "event": "November Challenge 2021",
+      "href": "https://www.codechef.com/NOV21",
+      "id": 26473524,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-11-05T09:30:00"
+    },
+    {
+      "duration": 9000,
+      "end": "2021-11-21T18:30:00",
+      "event": "November Cook-Off 2021",
+      "href": "https://www.codechef.com/COOK135",
+      "id": 26473541,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-11-21T16:00:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2021-11-27T17:00:00",
+      "event": "November Lunchtime 2021",
+      "href": "https://www.codechef.com/LTIME102",
+      "id": 26473519,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-11-27T14:00:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2021-11-28T13:30:00",
+      "event": "November CodeChef Starters 2021",
+      "href": "https://www.codechef.com/START10",
+      "id": 26473544,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-11-28T10:30:00"
+    },
+    {
+      "duration": 864000,
+      "end": "2021-12-13T09:30:00",
+      "event": "December Challenge 2021",
+      "href": "https://www.codechef.com/DEC21",
+      "id": 26473530,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-12-03T09:30:00"
+    },
+    {
+      "duration": 9000,
+      "end": "2021-12-19T18:30:00",
+      "event": "December Cook-Off 2021",
+      "href": "https://www.codechef.com/COOK136",
+      "id": 26473542,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-12-19T16:00:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2021-12-25T17:00:00",
+      "event": "December Lunchtime 2021",
+      "href": "https://www.codechef.com/LTIME103",
+      "id": 26473523,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-12-25T14:00:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2021-12-26T13:30:00",
+      "event": "December CodeChef Starters 2021",
+      "href": "https://www.codechef.com/START11",
+      "id": 26473543,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-12-26T10:30:00"
+    }
+  ]
+}
