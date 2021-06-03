@@ -1,0 +1,1012 @@
+{
+  "meta": {
+    "estimated_count": 8,
+    "limit": 100,
+    "next": "/api/v2/contest/?resource_id=2&username=imreallyjohn&api_key=a959cb12328ccc719dff701bb2b7d520f2f8d70c&limit=100&offset=100",
+    "offset": 0,
+    "previous": null,
+    "total_count": null
+  },
+  "objects": [
+    {
+      "duration": 972000,
+      "end": "2020-09-27T18:30:00",
+      "event": "EVOTECH4.0 : Project Exhibition",
+      "href": "http://www.codechef.com/EVOT2020?itm_campaign=contest_listing",
+      "id": 21862699,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2020-09-16T12:30:00"
+    },
+    {
+      "duration": 7200,
+      "end": "2015-09-11T10:00:00",
+      "event": "Grow Geeks Warm-up Challenge",
+      "href": "http://www.codechef.com/GGWC15TS",
+      "id": 3299854,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2015-09-11T08:00:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2020-08-26T15:30:00",
+      "event": "Beginner Challenges",
+      "href": "http://www.codechef.com/BING2020?itm_campaign=contest_listing",
+      "id": 21452501,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2020-08-26T12:30:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2021-02-28T15:15:00",
+      "event": "February CodeChef Starters 2021 (Rated for Div 3)",
+      "href": "https://www.codechef.com/START1",
+      "id": 25344077,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-02-28T12:15:00"
+    },
+    {
+      "duration": 7200,
+      "end": "2021-01-10T15:30:00",
+      "event": "Code IT NITJ",
+      "href": "https://www.codechef.com/NITJ2021?itm_campaign=contest_listing",
+      "id": 24212924,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-01-10T13:30:00"
+    },
+    {
+      "duration": 7200,
+      "end": "2016-02-27T13:30:00",
+      "event": "JNTUV Warmup",
+      "href": "http://www.codechef.com/JNTU2016",
+      "id": 4489386,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2016-02-27T11:30:00"
+    },
+    {
+      "duration": 1296000,
+      "end": "2020-08-05T18:30:00",
+      "event": "Bharat BillPay I3 Ideathon",
+      "href": "http://www.codechef.com/BBPSHACK?itm_campaign=contest_listing",
+      "id": 20928436,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2020-07-21T18:30:00"
+    },
+    {
+      "duration": 4500,
+      "end": "2021-01-18T14:15:00",
+      "event": "Hey Newbees, Here is Some Honey (Round 3)",
+      "href": "https://www.codechef.com/BEE32021?itm_campaign=contest_listing",
+      "id": 24382428,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-01-18T13:00:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2021-03-29T18:30:00",
+      "event": "CodeRush 2021",
+      "href": "https://www.codechef.com/CRSH2021",
+      "id": 26076622,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-03-29T15:30:00"
+    },
+    {
+      "duration": 9000,
+      "end": "2021-04-06T17:00:00",
+      "event": "International Coding Marathon 2021 (Rated for Div 2 & Div 3)",
+      "href": "https://www.codechef.com/ICM2021",
+      "id": 26266455,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-04-06T14:30:00"
+    },
+    {
+      "duration": 7200,
+      "end": "2021-01-26T15:30:00",
+      "event": "CodeWars 2.0",
+      "href": "https://www.codechef.com/CWR22021?itm_campaign=contest_listing",
+      "id": 24640189,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-01-26T13:30:00"
+    },
+    {
+      "duration": 3600,
+      "end": "2021-03-07T14:30:00",
+      "event": "Women in CP - Roundtable Conversation",
+      "href": "https://www.facebook.com/groups/womenincp",
+      "id": 25516453,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-03-07T13:30:00"
+    },
+    {
+      "duration": 100800,
+      "end": "2016-10-01T18:30:00",
+      "event": "CodeOn - September Long Contest (MIT), Test page",
+      "href": "http://www.codechef.com/STCO16TS",
+      "id": 5949901,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2016-09-30T14:30:00"
+    },
+    {
+      "duration": 9000,
+      "end": "2021-02-26T14:30:00",
+      "event": "E-Contest",
+      "href": "https://www.codechef.com/EFNL2021",
+      "id": 25347930,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-02-26T12:00:00"
+    },
+    {
+      "duration": 864000,
+      "end": "2015-07-13T09:30:00",
+      "event": "July Challenge 2015",
+      "href": "http://www.codechef.com/JULY15?itm_campaign=contest_listing",
+      "id": 1695248,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2015-07-03T09:30:00"
+    },
+    {
+      "duration": 3600,
+      "end": "2021-02-21T17:00:00",
+      "event": "Break-The-Server (Unrated)",
+      "href": "https://www.codechef.com//CCHI2021",
+      "id": 25247905,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-02-21T16:00:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2014-05-15T18:30:00",
+      "event": "National Computing Contest 2014",
+      "href": "http://www.codechef.com/NCC2014?itm_campaign=contest_listing",
+      "id": 831419,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2014-05-15T15:30:00"
+    },
+    {
+      "duration": 172800,
+      "end": "2018-04-29T18:30:00",
+      "event": "LoC April 2018 (Rated for Division 2)",
+      "href": "http://www.codechef.com/LOCAPR18?itm_campaign=contest_listing",
+      "id": 11103771,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2018-04-27T18:30:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2020-12-19T18:30:00",
+      "event": "UWCOI 2021 (Rated for all)",
+      "href": "http://www.codechef.com/UWCOI21?itm_campaign=contest_listing",
+      "id": 23738027,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2020-12-19T15:30:00"
+    },
+    {
+      "duration": 432000,
+      "end": "2014-11-19T15:30:00",
+      "event": "Code Smart 2014",
+      "href": "http://www.codechef.com/CDSM2014?itm_campaign=contest_listing",
+      "id": 1553782,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2014-11-14T15:30:00"
+    },
+    {
+      "duration": 9000,
+      "end": "2020-07-19T18:30:00",
+      "event": "July Cook-Off 2020",
+      "href": "http://www.codechef.com/COOK120?itm_campaign=contest_listing",
+      "id": 19219685,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2020-07-19T16:00:00"
+    },
+    {
+      "duration": 7200,
+      "end": "2021-02-17T15:00:00",
+      "event": "CP Potpourri Prelims",
+      "href": "https://www.codechef.com/CPOT2021?itm_campaign=contest_listing",
+      "id": 25014718,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-02-17T13:00:00"
+    },
+    {
+      "duration": 12600,
+      "end": "2018-10-03T15:00:00",
+      "event": "Exun 2018 Programming Prelims",
+      "href": "http://www.codechef.com/EXPP2018?itm_campaign=contest_listing",
+      "id": 12578470,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2018-10-03T11:30:00"
+    },
+    {
+      "duration": 219600,
+      "end": "2021-02-07T17:30:00",
+      "event": "SSEC Coding Contest - 6",
+      "href": "https://www.codechef.com/SSC62021?itm_campaign=contest_listing",
+      "id": 24869275,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-02-05T04:30:00"
+    },
+    {
+      "duration": 7200,
+      "end": "2020-11-03T16:30:00",
+      "event": "Educational Competitive Programming Contest (ECPC 1.0)",
+      "href": "http://www.codechef.com/ECPG2020?itm_campaign=contest_listing",
+      "id": 22751789,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2020-11-03T14:30:00"
+    },
+    {
+      "duration": 864000,
+      "end": "2012-08-11T09:30:00",
+      "event": "August Challenge 2012",
+      "href": "http://www.codechef.com/AUG12?itm_campaign=contest_listing",
+      "id": 5624971,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2012-08-01T09:30:00"
+    },
+    {
+      "duration": 9000,
+      "end": "2021-04-05T09:00:00",
+      "event": "Code Shake 1.0",
+      "href": "https://www.codechef.com/CSK2021",
+      "id": 26190108,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-04-05T06:30:00"
+    },
+    {
+      "duration": 14400,
+      "end": "2014-02-14T18:30:00",
+      "event": "C-Cube 2014",
+      "href": "http://www.codechef.com/CCUBE14/",
+      "id": 359692,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2014-02-14T14:30:00"
+    },
+    {
+      "duration": 864000,
+      "end": "2020-10-12T09:30:00",
+      "event": "October Challenge 2020",
+      "href": "http://www.codechef.com/OCT20?itm_campaign=contest_listing",
+      "id": 19219699,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2020-10-02T09:30:00"
+    },
+    {
+      "duration": 7200,
+      "end": "2020-10-10T14:45:00",
+      "event": "The Algo Way 1.0",
+      "href": "http://www.codechef.com/TAWY2020?itm_campaign=contest_listing",
+      "id": 22309870,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2020-10-10T12:45:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2020-09-26T17:30:00",
+      "event": "September Lunchtime 2020",
+      "href": "http://www.codechef.com/LTIME88?itm_campaign=contest_listing",
+      "id": 19219704,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2020-09-26T14:30:00"
+    },
+    {
+      "duration": 864000,
+      "end": "2020-09-14T09:30:00",
+      "event": "September Challenge 2020",
+      "href": "http://www.codechef.com/SEPT20?itm_campaign=contest_listing",
+      "id": 19219696,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2020-09-04T09:30:00"
+    },
+    {
+      "duration": 28800,
+      "end": "2010-01-24T16:30:00",
+      "event": "Encoder 2010",
+      "href": "http://www.codechef.com/ENC2010?itm_campaign=contest_listing",
+      "id": 5625110,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2010-01-24T08:30:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2021-01-19T17:30:00",
+      "event": "Code Medicaps",
+      "href": "http://www.codechef.com/CMED2021?itm_campaign=contest_listing",
+      "id": 24483913,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-01-19T14:30:00"
+    },
+    {
+      "duration": 3600,
+      "end": "2014-01-18T06:30:00",
+      "event": "Code-It 2014",
+      "href": "http://www.codechef.com/CDIT2014?itm_campaign=contest_listing",
+      "id": 159595,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2014-01-18T05:30:00"
+    },
+    {
+      "duration": 9900,
+      "end": "2020-08-23T18:45:00",
+      "event": "August Cook-Off 2020",
+      "href": "http://www.codechef.com/COOK121?itm_campaign=contest_listing",
+      "id": 19219688,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2020-08-23T16:00:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2018-10-23T17:00:00",
+      "event": "ICPC for Schools 2018",
+      "href": "http://www.codechef.com/ICPCSC18?utm_source=contest_listing&utm_medium=link&utm_campaign=ICPCSC18",
+      "id": 12655449,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2018-10-23T14:00:00"
+    },
+    {
+      "duration": 9000,
+      "end": "2020-11-21T14:00:00",
+      "event": "Get Set and Code",
+      "href": "http://www.codechef.com/CHLG2020?itm_campaign=contest_listing",
+      "id": 23133599,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2020-11-21T11:30:00"
+    },
+    {
+      "duration": 216000,
+      "end": "2020-04-04T18:30:00",
+      "event": "Campus Chapters Contest 1.0",
+      "href": "http://www.codechef.com/CHPTRS01?itm_campaign=contest_listing",
+      "id": 18977066,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2020-04-02T06:30:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2020-03-29T18:30:00",
+      "event": "#include techweed.h",
+      "href": "http://www.codechef.com/INTW2020?itm_campaign=contest_listing",
+      "id": 18917607,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2020-03-29T15:30:00"
+    },
+    {
+      "duration": 864000,
+      "end": "2020-03-16T09:30:00",
+      "event": "March Challenge 2020",
+      "href": "http://www.codechef.com/MARCH20?itm_campaign=contest_listing",
+      "id": 17986178,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2020-03-06T09:30:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2020-02-25T18:30:00",
+      "event": "UWCOI 2020 (Rated for all)",
+      "href": "http://www.codechef.com/UWCOI20?itm_campaign=contest_listing",
+      "id": 18132525,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2020-02-25T15:30:00"
+    },
+    {
+      "duration": 2700,
+      "end": "2020-12-13T15:15:00",
+      "event": "push_back(0)",
+      "href": "http://www.codechef.com/PBK02020?itm_campaign=contest_listing",
+      "id": 23602694,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2020-12-13T14:30:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2020-02-08T19:30:00",
+      "event": "Overnite Coding",
+      "href": "http://www.codechef.com/ONCO2020?itm_campaign=contest_listing",
+      "id": 17795453,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2020-02-08T16:30:00"
+    },
+    {
+      "duration": 2940,
+      "end": "2020-12-25T15:19:00",
+      "event": "push_back(3)",
+      "href": "http://www.codechef.com/PBK32020?itm_campaign=contest_listing",
+      "id": 23896630,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2020-12-25T14:30:00"
+    },
+    {
+      "duration": 1800,
+      "end": "2020-02-02T17:30:00",
+      "event": "ketek[i] QuickMatch 20",
+      "href": "http://www.codechef.com/QM202020?itm_campaign=contest_listing",
+      "id": 17746938,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2020-02-02T17:00:00"
+    },
+    {
+      "duration": 14400,
+      "end": "2020-07-18T19:00:00",
+      "event": "QUARANTINE FUN",
+      "href": "http://www.codechef.com/QFUN2020?itm_campaign=contest_listing",
+      "id": 20822771,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2020-07-18T15:00:00"
+    },
+    {
+      "duration": 86400,
+      "end": "2015-04-19T15:30:00",
+      "event": "Insomnia 2015 Replay",
+      "href": "http://www.codechef.com/INRP2015/",
+      "id": 2512353,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2015-04-18T15:30:00"
+    },
+    {
+      "duration": 18000,
+      "end": "2019-12-08T10:30:00",
+      "event": "ICPC Asia-Kharagpur Onsite Mirror Contest 2019",
+      "href": "http://www.codechef.com/KH19MOS?itm_campaign=contest_listing",
+      "id": 17017929,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2019-12-08T05:30:00"
+    },
+    {
+      "duration": 86400,
+      "end": "2014-01-26T14:30:00",
+      "event": "Pulzion 14",
+      "href": "http://www.codechef.com/PLZN2014/",
+      "id": 177922,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2014-01-25T14:30:00"
+    },
+    {
+      "duration": 367200,
+      "end": "2020-03-09T18:30:00",
+      "event": "Upgrad IIT Madras ML and Cloud All India Selection Contest",
+      "href": "http://www.codechef.com/UPGD2020?itm_campaign=contest_listing",
+      "id": 18347392,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2020-03-05T12:30:00"
+    },
+    {
+      "duration": 9000,
+      "end": "2019-11-19T09:30:00",
+      "event": "Battle of Bits 2.0",
+      "href": "http://www.codechef.com/BOB22019?itm_campaign=contest_listing",
+      "id": 16758780,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2019-11-19T07:00:00"
+    },
+    {
+      "duration": 7200,
+      "end": "2019-11-18T17:30:00",
+      "event": "Cypher November",
+      "href": "http://www.codechef.com/CYNO2019?itm_campaign=contest_listing",
+      "id": 16802513,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2019-11-18T15:30:00"
+    },
+    {
+      "duration": 9000,
+      "end": "2019-11-17T18:30:00",
+      "event": "November Cook-Off 2019",
+      "href": "http://www.codechef.com/COOK112?itm_campaign=contest_listing",
+      "id": 13671214,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2019-11-17T16:00:00"
+    },
+    {
+      "duration": 6829200,
+      "end": "2021-03-11T05:30:00",
+      "event": " ICPC Training Series- Contest 01",
+      "href": "https://www.codechef.com/ICPCTR01",
+      "id": 24002734,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2020-12-22T04:30:00"
+    },
+    {
+      "duration": 7200,
+      "end": "2019-11-10T15:30:00",
+      "event": "#DEFINE",
+      "href": "http://www.codechef.com/DEFI2019?itm_campaign=contest_listing",
+      "id": 16679263,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2019-11-10T13:30:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2019-11-09T15:30:00",
+      "event": "Hindustan University ICPC Multi Provincial Contest 2019",
+      "href": "http://www.codechef.com/CNMP2019?itm_campaign=contest_listing",
+      "id": 16457267,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2019-11-09T12:30:00"
+    },
+    {
+      "duration": 1800,
+      "end": "2019-11-03T15:00:00",
+      "event": "ketek[i] QuickMatch 17",
+      "href": "http://www.codechef.com/QM172019?itm_campaign=contest_listing",
+      "id": 16487475,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2019-11-03T14:30:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2021-01-09T17:30:00",
+      "event": "CODEOVERFLOW #1.4",
+      "href": "https://www.codechef.com/INDC2021?itm_campaign=contest_listing",
+      "id": 24233877,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-01-09T14:30:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2015-10-16T18:30:00",
+      "event": "CodePhase",
+      "href": "http://www.codechef.com/CDPE15TS",
+      "id": 3554169,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2015-10-16T15:30:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2021-03-11T12:30:00",
+      "event": "Code Uncode 4.0",
+      "href": "https://www.codechef.com/UNCO2021",
+      "id": 25656964,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-03-11T09:30:00"
+    },
+    {
+      "duration": 1134000,
+      "end": "2019-09-26T16:30:00",
+      "event": "Samsung Hiring Challenge",
+      "href": "http://www.codechef.com/SGHC2019?itm_campaign=contest_listing",
+      "id": 16010860,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2019-09-13T13:30:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2019-06-29T17:00:00",
+      "event": "June Lunchtime 2019",
+      "href": "http://www.codechef.com/LTIME73?itm_campaign=contest_listing",
+      "id": 13670977,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2019-06-29T14:00:00"
+    },
+    {
+      "duration": 864000,
+      "end": "2019-08-12T09:30:00",
+      "event": "August Challenge 2019",
+      "href": "http://www.codechef.com/AUG19?itm_campaign=contest_listing",
+      "id": 13670984,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2019-08-02T09:30:00"
+    },
+    {
+      "duration": 86400,
+      "end": "2019-06-20T10:00:00",
+      "event": "Try This One",
+      "href": "http://www.codechef.com/TTO2019?itm_campaign=contest_listing",
+      "id": 15248157,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2019-06-19T10:00:00"
+    },
+    {
+      "duration": 7200,
+      "end": "2020-12-28T14:30:00",
+      "event": "Breaking Bugs",
+      "href": "http://www.codechef.com/BRBG2020?itm_campaign=contest_listing",
+      "id": 23929003,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2020-12-28T12:30:00"
+    },
+    {
+      "duration": 7200,
+      "end": "2020-12-26T15:00:00",
+      "event": "Reload the Code Gun",
+      "href": "http://www.codechef.com/RTCG2020?itm_campaign=contest_listing",
+      "id": 23929290,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2020-12-26T13:00:00"
+    },
+    {
+      "duration": 702000,
+      "end": "2019-04-15T18:30:00",
+      "event": "Alkhwarizm (Rated for all)",
+      "href": "http://www.codechef.com/ALKH2019?itm_campaign=contest_listing",
+      "id": 14403919,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2019-04-07T15:30:00"
+    },
+    {
+      "duration": 7200,
+      "end": "2020-12-22T17:30:00",
+      "event": "Code Starter",
+      "href": "http://www.codechef.com/CSTR2020?itm_campaign=contest_listing",
+      "id": 23830611,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2020-12-22T15:30:00"
+    },
+    {
+      "duration": 7200,
+      "end": "2015-06-07T18:00:00",
+      "event": "CodeChef SnackDown 2015, Round 1C",
+      "href": "http://www.codechef.com/SNCK2015",
+      "id": 2741095,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2015-06-07T16:00:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2020-11-22T19:00:00",
+      "event": "November Cook-Off 2020",
+      "href": "http://www.codechef.com/COOK124?itm_campaign=contest_listing",
+      "id": 19219700,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2020-11-22T16:00:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2019-03-16T15:30:00",
+      "event": "Turing Cup 2019 Finals (Mirror)",
+      "href": "http://www.codechef.com/TCM2019?itm_campaign=contest_listing",
+      "id": 14136366,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2019-03-16T12:30:00"
+    },
+    {
+      "duration": 7200,
+      "end": "2020-11-21T17:30:00",
+      "event": "Encoder 2020",
+      "href": "http://www.codechef.com/ENCO2020?itm_campaign=contest_listing",
+      "id": 23134225,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2020-11-21T15:30:00"
+    },
+    {
+      "duration": 86400,
+      "end": "2015-03-12T04:30:00",
+      "event": "Code Warrior 2015",
+      "href": "http://www.codechef.com/CDWA2015/",
+      "id": 2268011,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2015-03-11T04:30:00"
+    },
+    {
+      "duration": 4500,
+      "end": "2020-12-31T16:45:00",
+      "event": "push_back(end)",
+      "href": "https://www.codechef.com/PEND2020?itm_campaign=contest_listing",
+      "id": 24018658,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2020-12-31T15:30:00"
+    },
+    {
+      "duration": 43200,
+      "end": "2015-04-15T16:30:00",
+      "event": "Code-Hack 1.0",
+      "href": "http://www.codechef.com/COHA2015/",
+      "id": 2505984,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2015-04-15T04:30:00"
+    },
+    {
+      "duration": 7200,
+      "end": "2021-01-08T15:30:00",
+      "event": "Codigo",
+      "href": "https://www.codechef.com/CDGO2021?itm_campaign=contest_listing",
+      "id": 24216003,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-01-08T13:30:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2019-02-24T13:30:00",
+      "event": "Ureckon International Coding Challenge (UICC)",
+      "href": "http://www.codechef.com/UICC2019?itm_campaign=contest_listing",
+      "id": 13921083,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2019-02-24T10:30:00"
+    },
+    {
+      "duration": 12600,
+      "end": "2019-02-19T20:00:00",
+      "event": "Code Mutants 2019",
+      "href": "http://www.codechef.com/COMU2019?itm_campaign=contest_listing",
+      "id": 13865502,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2019-02-19T16:30:00"
+    },
+    {
+      "duration": 4200,
+      "end": "2015-09-15T10:00:00",
+      "event": "PCCOE Hacker Cup",
+      "href": "http://www.codechef.com/PCHC2015",
+      "id": 3345081,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2015-09-15T08:50:00"
+    },
+    {
+      "duration": 9000,
+      "end": "2021-01-18T18:00:00",
+      "event": "Chef Dynasty",
+      "href": "https://www.codechef.com/CDYN2021?itm_campaign=contest_listing",
+      "id": 24445368,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-01-18T15:30:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2019-07-27T09:30:00",
+      "event": "Kunal saini",
+      "href": "http://www.codechef.com/COSK2019?utm_source=contest_listing&utm_medium=link&utm_campaign=COSK2019",
+      "id": 15597406,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2019-07-27T06:30:00"
+    },
+    {
+      "duration": 9000,
+      "end": "2015-10-17T18:30:00",
+      "event": "Codingineers Contest #2",
+      "href": "http://www.codechef.com/CDEI1501",
+      "id": 3558795,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2015-10-17T16:00:00"
+    },
+    {
+      "duration": 3600,
+      "end": "2020-07-10T10:30:00",
+      "event": "Debuggers Fiesta",
+      "href": "http://www.codechef.com/DEFT2020?itm_campaign=contest_listing",
+      "id": 20691219,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2020-07-10T09:30:00"
+    },
+    {
+      "duration": 864000,
+      "end": "2020-12-14T09:30:00",
+      "event": "December Challenge 2020",
+      "href": "http://www.codechef.com/DEC20?itm_campaign=contest_listing",
+      "id": 19219703,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2020-12-04T09:30:00"
+    },
+    {
+      "duration": 1706400,
+      "end": "2016-07-29T18:30:00",
+      "event": "UEM KOLKATA JULY COLLAGE CODING COMPITITION",
+      "href": "http://www.codechef.com/UEMK16TS",
+      "id": 5495486,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2016-07-10T00:30:00"
+    },
+    {
+      "duration": 21599,
+      "end": "2016-03-05T18:29:59",
+      "event": "Codeadda Practice Contest-2",
+      "href": "http://www.codechef.com/CPC16TS",
+      "id": 4587962,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2016-03-05T12:30:00"
+    },
+    {
+      "duration": 86400,
+      "end": "2021-02-21T04:30:00",
+      "event": "Code Wars",
+      "href": "https://www.codechef.com//CWRS2021",
+      "id": 25192342,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-02-20T04:30:00"
+    },
+    {
+      "duration": 86400,
+      "end": "2021-04-11T12:30:00",
+      "event": "Runtime Terror",
+      "href": "https://www.codechef.com/RTR2021",
+      "id": 26384601,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-04-10T12:30:00"
+    },
+    {
+      "duration": 7200,
+      "end": "2015-09-18T14:00:00",
+      "event": "Testing Contests",
+      "href": "http://www.codechef.com/TESTING",
+      "id": 3366083,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2015-09-18T12:00:00"
+    },
+    {
+      "duration": 2160000,
+      "end": "2018-09-25T18:30:00",
+      "event": "Zhejiang Lab Cup Global AI Competition: Zero-shot Learning Picture Recognition",
+      "href": "http://www.codechef.com/ZLC2018?itm_campaign=contest_listing",
+      "id": 12338536,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2018-08-31T18:30:00"
+    },
+    {
+      "duration": 432000,
+      "end": "2018-08-29T13:30:00",
+      "event": "BUG4EVER 2018 Online Round",
+      "href": "http://www.codechef.com/BUGE2018?itm_campaign=contest_listing",
+      "id": 12162244,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2018-08-24T13:30:00"
+    },
+    {
+      "duration": 86400,
+      "end": "2015-01-19T05:30:00",
+      "event": "Qube 2015, round 1",
+      "href": "http://www.codechef.com/QUB1401/",
+      "id": 1867273,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2015-01-18T05:30:00"
+    },
+    {
+      "duration": 32400,
+      "end": "2015-02-16T00:30:00",
+      "event": "Codenigma 2015",
+      "href": "http://www.codechef.com/CDEN2015/",
+      "id": 2046979,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2015-02-15T15:30:00"
+    },
+    {
+      "duration": 86400,
+      "end": "2015-02-21T09:00:00",
+      "event": "Codegeass 2015",
+      "href": "http://www.codechef.com/CDGE2015/",
+      "id": 2104051,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2015-02-20T09:00:00"
+    },
+    {
+      "duration": 86400,
+      "end": "2015-02-27T12:30:00",
+      "event": "Dead Line 24, 2014 replay",
+      "href": "http://www.codechef.com/DDL1501/",
+      "id": 2158290,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2015-02-26T12:30:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2015-03-08T16:30:00",
+      "event": "Codejam 2015",
+      "href": "http://www.codechef.com/CODJ2015/",
+      "id": 2200963,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2015-03-08T13:30:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2021-03-27T17:00:00",
+      "event": "March Lunchtime 2021",
+      "href": "https://www.codechef.com/LTIME94",
+      "id": 25344049,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2021-03-27T14:00:00"
+    },
+    {
+      "duration": 10800,
+      "end": "2017-03-08T09:30:00",
+      "event": "Mind Your Bug!!, TEST SITE",
+      "href": "http://www.codechef.com/MIYB17TS",
+      "id": 7497641,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2017-03-08T06:30:00"
+    },
+    {
+      "duration": 172800,
+      "end": "2018-07-29T18:30:00",
+      "event": "LoC July 2018",
+      "href": "http://www.codechef.com/LOCJUL18?itm_campaign=contest_listing",
+      "id": 11994288,
+      "resource": "codechef.com",
+      "resource_id": 2,
+      "start": "2018-07-27T18:30:00"
+    }
+  ]
+}
