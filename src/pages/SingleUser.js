@@ -6,10 +6,13 @@ import DoughnutChart from "../components/DoughnutChart";
 function SingleUser() {
   const [stats, setStats] = useState([]);
   const [user, Setuser] = useState(null);
+  function loader(enteredUsername) {
+    Setuser(enteredUsername);
+  }
   useEffect(() => {
     var headers = {
       Accept: "application/json",
-      Authorization: "Bearer 44815009ba918f324c79c4d87ba979a36da94203",
+      Authorization: "Bearer 317e3eba2d6afbc190adcf5cd27f0c5ba4029e60",
     };
     console.log(user);
     var UserName = user;
@@ -24,7 +27,7 @@ function SingleUser() {
       .then(
         (res) => {
           console.log(res);
-          if (res.status === "OK") {
+          if (res.result.data.code === 9001) {
             var sol = [];
             sol.push(res.result.data.content.submissionStats.acceptedSubmissions);
             sol.push(res.result.data.content.submissionStats.wrongSubmissions);
@@ -34,20 +37,17 @@ function SingleUser() {
             sol.push(res.result.data.content.submissionStats.partiallySolvedProblems);
             setStats(sol);
           }
-		  else {
-			console.log(res.status);
-			
-		  }
+          else Setuser(null)
+		 
+		  
         },
         (error) => {
           console.log(error);
         }
       );
-  }, []);
+  }, [user]);
 
-  function loader(enteredUsername) {
-    Setuser(enteredUsername);
-  }
+
   return (
     <>
       <SingleUserForm OnSubmit={loader} />
