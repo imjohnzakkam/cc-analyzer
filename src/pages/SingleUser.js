@@ -7,12 +7,14 @@ function SingleUser() {
   const [stats, setStats] = useState([]);
   const [user, Setuser] = useState(null);
   function loader(enteredUsername) {
+    setStats([])
     Setuser(enteredUsername);
+    
   }
   useEffect(() => {
     var headers = {
       Accept: "application/json",
-      Authorization: "Bearer 317e3eba2d6afbc190adcf5cd27f0c5ba4029e60",
+      Authorization: "Bearer 51967b230f3dda2491a74fe23b767f596b70adfb",
     };
     console.log(user);
     var UserName = user;
@@ -26,7 +28,7 @@ function SingleUser() {
       .then((res) => res.json())
       .then(
         (res) => {
-          console.log(res);
+          //onsole.log(res);
           if (res.result.data.code === 9001) {
             var sol = [];
             sol.push(res.result.data.content.submissionStats.acceptedSubmissions);
@@ -37,7 +39,12 @@ function SingleUser() {
             sol.push(res.result.data.content.submissionStats.partiallySolvedProblems);
             setStats(sol);
           }
-          else Setuser(null)
+          else {
+            setStats([]);
+            alert("Enter correct Codechef username");
+            Setuser(null);
+          
+          }
 		 
 		  
         },
@@ -53,7 +60,7 @@ function SingleUser() {
       <SingleUserForm OnSubmit={loader} />
       {user ? (
         <div>
-          <DoughnutChart />
+          <DoughnutChart data={stats}/>
         </div>
       ) : (
         <h1>Enter user name</h1>

@@ -1,10 +1,21 @@
+import { data } from "jquery";
 import { React, useState, useEffect } from "react";
 import { Doughnut } from "react-chartjs-2";
 
 const fetch = require("node-fetch");
 
 function DoughnutChart(props) {
-  
+  var lbs=[
+    "Accepted",
+    "Wrong Answer",
+    "Time limit Exceeded",
+    "Runtime Error",
+    "Compiliation Error",
+    "Partially Accepted",
+  ]
+  if(props.data.length===0){
+       lbs=[]
+  }
 //   const [stats, setStats] = useState([]);
 //   useEffect(() => {
 //     var headers = {
@@ -39,18 +50,11 @@ function DoughnutChart(props) {
   return (
     <Doughnut
       data={{
-        labels: [
-          "Accepted",
-          "Wrong Answer",
-          "Time limit Exceeded",
-          "Runtime Error",
-          "Compiliation Error",
-          "Partially Accepted",
-        ],
+        labels: lbs,
         datasets: [
           {
             label: "Submission Doughnut",
-            data: [2,10,20, 30],
+            data: props.data,
             backgroundColor: [
               "rgba(0, 255, 71, 0.5)",
               "rgba(255, 99, 132, 0.5)",
