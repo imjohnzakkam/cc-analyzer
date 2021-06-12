@@ -7,7 +7,7 @@ function App() {
     <>
       <Layout>
         {/* <HomePage /> */}
-		<SingleUser />
+		<SingleUser />		
       </Layout>
     </>
   );
