@@ -9,9 +9,12 @@ function DoughnutChart(props) {
     "Compiliation Error",
     "Partially Accepted",
   ]
-  if(props.data.length===0){
-       lbs=[]
+  var x = 0;
+  for(var i = 0; i < props.data.length; i++) x += props.data[i];
+  if(x===0){
+    lbs=[]
   }
+  console.log(lbs);
   return (
     <Doughnut
       data={{

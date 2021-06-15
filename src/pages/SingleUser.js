@@ -12,23 +12,30 @@ function SingleUser() {
   const [user, Setuser] = useState(null);
   const [DATE, setDATE] = useState([]);
   const [rating, Setrating] = useState([]);
-  const [bestrank,SetBestrank]=useState([]);
-  const [worstrank,Setworstrank]=useState([]);
-  const [MaxUp,setmaxup]=useState([]);
-  const [Maxdown,setMaxdown]=useState([]);
-  const [contests,Setcontests]=useState([]);
+  const [bestrank, SetBestrank] = useState([]);
+  const [worstrank, Setworstrank] = useState([]);
+  const [MaxUp, setmaxup] = useState([]);
+  const [Maxdown, setMaxdown] = useState([]);
+  const [contests, Setcontests] = useState([]);
   function loader(enteredUsername) {
     setStats([]);
+    Setrating([]);
+    SetBestrank([0]);
+    Setworstrank([0]);
+    setMaxdown([0]);
+    setmaxup([0]);
+    Setcontests([0]);
     Setuser(enteredUsername);
+
   }
   function getRatingData(UserName) {
     var ratings = [],
-      ranks=[],
-      dates = [];   
-      var Best=[];
-      var Worst=[];
-      var maxup=[];
-      var maxdown=[];
+      ranks = [],
+      dates = [];
+    var Best = [];
+    var Worst = [];
+    var maxup = [];
+    var maxdown = [];
     request(
       "https://aqueous-ravine-73981.herokuapp.com/https://www.codechef.com/users/" +
         UserName,
@@ -44,44 +51,43 @@ function SingleUser() {
           index = Str.indexOf("}]");
           var S = Str.slice(index1, index + 2);
           var req = JSON.parse(S);
-          var best,worst,maxUp,maxDown;
+          var best, worst, maxUp, maxDown;
           for (var i = 0; i < req.length; i++) {
             ratings.push(parseInt(req[i].rating));
             dates.push(req[i].name);
             ranks.push(parseInt(req[i].rank));
-            if(i===0){
-              best=req[i].rank;
-              worst=req[i].rank;
-              maxUp=0;maxDown=0;
-            }
-            else{
-              best=Math.min(best,ranks[i]);
-              worst=Math.max(worst,ranks[i]);
-             maxUp=Math.max(maxUp,ratings[i]-ratings[i-1]);
-            maxDown=Math.max(maxDown,ratings[i-1]-ratings[i]);
+            if (i === 0) {
+              best = req[i].rank;
+              worst = req[i].rank;
+              maxUp = 0;
+              maxDown = 0;
+            } else {
+              best = Math.min(best, ranks[i]);
+              worst = Math.max(worst, ranks[i]);
+              maxUp = Math.max(maxUp, ratings[i] - ratings[i - 1]);
+              maxDown = Math.max(maxDown, ratings[i - 1] - ratings[i]);
             }
           }
           Best.push(best);
           Worst.push(worst);
           maxup.push(maxUp);
-         maxdown.push(maxDown);
-         Setcontests([req.length]);
+          maxdown.push(maxDown);
+          Setcontests([req.length]);
           setmaxup(maxup);
           setMaxdown(maxdown);
           SetBestrank(Best);
           Setworstrank(Worst);
           Setrating(ratings);
           setDATE(dates);
-
         }
       }
     );
-    return [ratings, dates,Best,Worst];
+    return [ratings, dates, Best, Worst];
   }
   useEffect(() => {
     var headers = {
       Accept: "application/json",
-      Authorization: "Bearer 084dd281796f46eea25c6635c82ca252b45a66c6",
+      Authorization: "Bearer 610c9d63c2d54e53ce0630fc3d0bd4dd1aeced32",
     };
     var UserName = user;
     const url =
@@ -92,7 +98,7 @@ function SingleUser() {
       .get(url, { headers: headers })
       .then((res) => res)
       .then(
-        (res) => {
+        (res) => {          
           if (res.data.result.data.code === 9001) {
             var sol = [];
             sol.push(
@@ -110,7 +116,7 @@ function SingleUser() {
             );
             sol.push(
               res.data.result.data.content.submissionStats
-                .partiallySolvedProblems
+                .partiallySolvedSubmissions
             );
             setStats(sol);
           } else {
@@ -122,10 +128,10 @@ function SingleUser() {
         (error) => {
           console.log(error);
         }
-    );
+      );
     var x, y, a, b;
     [x, y, a, b] = getRatingData(user);
-    console.log(x, y,a ,b);
+    console.log(x, y, a, b);
     console.log(user);
   }, [user]);
 
@@ -133,18 +139,22 @@ function SingleUser() {
     <>
       <SingleUserForm OnSubmit={loader} />
       {user ? (
-        <> 
+        <>
           <div>Bestrank={bestrank}</div>
-           <div>Worstrank={worstrank}</div>
-           <div>MaxUp={MaxUp}</div>
-           <div>Maxdown={Maxdown}</div>
+          <div>Worstrank={worstrank}</div>
+          <div>MaxUp={MaxUp}</div>
+          <div>Maxdown={Maxdown}</div>
           <div>Total Contests={contests}</div>
           <div>
             <DoughnutChart data={stats} />
           </div>
-          <div>
-            <RatingGraph date={DATE} Rating={rating} />
-          </div>
+          {rating.length > 0 ? (
+            <div>
+              <RatingGraph date={DATE} Rating={rating} />
+            </div>
+          ) : (
+            <div>No contests</div>
+          )}
         </>
       ) : (
         <> </>
