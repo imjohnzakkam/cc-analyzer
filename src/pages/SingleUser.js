@@ -17,7 +17,24 @@ function SingleUser() {
   const [MaxUp, setmaxup] = useState([]);
   const [Maxdown, setMaxdown] = useState([]);
   const [contests, Setcontests] = useState([]);
+  const [counter,Setcounter]=useState([]);
+  const [Solved,setSolved]=useState(0);
+  const [UnSolved,setUnsolved]=useState(0);
+  const [Tried,Settried]=useState(0);
+  const [partialLinks,setpartialLinks]=useState([]);
+  const [unsolvedLinks,setUnsolvedLinks]=useState([]);
+  const [Partial,setPartial]=useState(0);
+  const [Average,SetAverage]=useState(0);
   function loader(enteredUsername) {
+    // setStats([]);
+    // Setrating([]);
+    // SetBestrank([0]);
+    // Setworstrank([0]);
+    // setMaxdown([0]);
+    // setmaxup([0]);
+    // Setcontests([0]);
+
+    Setuser(enteredUsername);
     setStats([]);
     Setrating([]);
     SetBestrank([0]);
@@ -25,8 +42,15 @@ function SingleUser() {
     setMaxdown([0]);
     setmaxup([0]);
     Setcontests([0]);
-    Setuser(enteredUsername);
-
+    if(counter[0]===0) Setcounter([1]);
+    else Setcounter([0]);
+    Settried(0);
+    SetAverage(0);
+    setSolved(0);
+    setUnsolved(0);
+    setPartial(0);
+    setpartialLinks([]);
+    setUnsolvedLinks([]);
   }
   function getRatingData(UserName) {
     var ratings = [],
@@ -85,9 +109,10 @@ function SingleUser() {
     return [ratings, dates, Best, Worst];
   }
   useEffect(() => {
+    console.log(user);
     var headers = {
       Accept: "application/json",
-      Authorization: "Bearer 610c9d63c2d54e53ce0630fc3d0bd4dd1aeced32",
+      Authorization: "Bearer e34007671176242e09349591d3c570288002afa2",
     };
     var UserName = user;
     const url =
@@ -118,11 +143,66 @@ function SingleUser() {
               res.data.result.data.content.submissionStats
                 .partiallySolvedSubmissions
             );
+            var m1=new Map();
+            var avg=0;
+            var PartialCodes=[];
+            var solved=0;
+            var tried=0;
+            var unsolved=0;
+            var PartiallySolved=0;
+            var x,y,z;
+            x=res.data.result.data.content.problemStats.partiallySolved;
+            y=res.data.result.data.content.problemStats.solved
+            z=res.data.result.data.content.problemStats.attempted
+            avg=res.data.result.data.content.submissionStats.submittedSolutions;
+           // console.log(avg);
+        
+            for(const item in x){
+              PartiallySolved=PartiallySolved+x[item].length;
+              for (var i=0;i<x[item].length;i++){
+                PartialCodes.push(x[item][i]);
+              }
+            }
+            for(const item in y){
+              solved=solved+y[item].length;
+              for(var j=0;j<y[item].length;j++){
+                m1.set(y[item][j],1);
+              }
+            }
+            var Unsolved=[];
+
+            for(const item in z){
+             
+              for(var k=0;k<z[item].length;k++){
+                if(!m1.get(z[item][k])){
+                  Unsolved.push(z[item][k]);
+                  unsolved=unsolved+1;
+                }
+                
+              }
+            }
+      
+            solved=solved-PartiallySolved;
+            tried=solved+unsolved+PartiallySolved;
+            if(avg){
+              avg=avg/solved;
+            }
+            avg=(Math.round(avg*100))/100;
+        
             setStats(sol);
+            Settried(tried);
+            setSolved(solved);
+            setUnsolved(unsolved);
+            setpartialLinks(PartialCodes);
+            setUnsolvedLinks(Unsolved);
+            setPartial(PartiallySolved);
+            SetAverage(avg);
+
           } else {
             setStats([]);
             alert("Enter correct Codechef username");
             Setuser(null);
+            return;
           }
         },
         (error) => {
@@ -133,18 +213,39 @@ function SingleUser() {
     [x, y, a, b] = getRatingData(user);
     console.log(x, y, a, b);
     console.log(user);
-  }, [user]);
+  }, [user,counter]);
 
   return (
     <>
       <SingleUserForm OnSubmit={loader} />
       {user ? (
         <>
-          <div>Bestrank={bestrank}</div>
-          <div>Worstrank={worstrank}</div>
-          <div>MaxUp={MaxUp}</div>
-          <div>Maxdown={Maxdown}</div>
+        <div>Bestrank={bestrank}</div>
+           <div>Worstrank={worstrank}</div>
+           <div>MaxUp={MaxUp}</div>
+           <div>Maxdown={Maxdown}</div>
           <div>Total Contests={contests}</div>
+          <div>Tried={Tried}</div>
+          <div>solved={Solved}</div>
+          <div>PartiallySolved={Partial}</div>
+          <div>Average attempts={Average}</div>
+          <div>unsolved={UnSolved}</div>
+          {
+            partialLinks.map(Partial=>(
+              
+               <a href={"https://www.codechef.com/problems/"+Partial}>{Partial}<br></br></a>
+               
+          
+            ))
+          }
+          {
+            unsolvedLinks.map(unsolved=>(
+              
+               <a href={"https://www.codechef.com/problems/"+unsolved}>{unsolved}<br></br></a>
+               
+          
+            ))
+          }
           <div>
             <DoughnutChart data={stats} />
           </div>

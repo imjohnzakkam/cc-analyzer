@@ -14,7 +14,7 @@ function DoughnutChart(props) {
   if(x===0){
     lbs=[]
   }
-  console.log(lbs);
+  //console.log(lbs);
   return (
     <Doughnut
       data={{
