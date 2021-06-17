@@ -154,7 +154,7 @@ function SingleUser() {
     console.log(user);
     var headers = {
       Accept: "application/json",
-      Authorization: "Bearer c52927d7b42efdea61ad68beb5a7fee2877e0b32",
+      Authorization: "Bearer d65690f2a80843347619df6e9801573d4f2e737b",
     };
     var UserName = user;
     const url =
@@ -207,7 +207,6 @@ function SingleUser() {
             avg =
               res.data.result.data.content.submissionStats.submittedSolutions;
             // console.log(avg);
-
             for (const item in x) {
               PartiallySolved = PartiallySolved + x[item].length;
               for (var i = 0; i < x[item].length; i++) {
@@ -276,8 +275,7 @@ function SingleUser() {
       <SingleUserForm OnSubmit={loader} />
       {user ? (
         <>
-          {/* {console.log(image)} */}
-          <img src={image}></img>
+          <img src={image} alt="user_image"></img>
           {about ? <div>About me: {about}</div> : <></>}
           <div>
             <a
