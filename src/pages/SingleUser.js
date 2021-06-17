@@ -4,6 +4,7 @@ import axios from "axios";
 import SingleUserForm from "../components/formdata/SingleUserForm";
 import DoughnutChart from "../components/DoughnutChart";
 import RatingGraph from "../components/RatingGraph";
+
 const request = require("request");
 const cheerio = require("cheerio");
 
@@ -17,23 +18,25 @@ function SingleUser() {
   const [MaxUp, setmaxup] = useState([]);
   const [Maxdown, setMaxdown] = useState([]);
   const [contests, Setcontests] = useState([]);
-  const [counter,Setcounter]=useState([]);
-  const [Solved,setSolved]=useState(0);
-  const [UnSolved,setUnsolved]=useState(0);
-  const [Tried,Settried]=useState(0);
-  const [partialLinks,setpartialLinks]=useState([]);
-  const [unsolvedLinks,setUnsolvedLinks]=useState([]);
-  const [Partial,setPartial]=useState(0);
-  const [Average,SetAverage]=useState(0);
+  const [counter, Setcounter] = useState([]);
+  const [Solved, setSolved] = useState(0);
+  const [UnSolved, setUnsolved] = useState(0);
+  const [Tried, Settried] = useState(0);
+  const [partialLinks, setpartialLinks] = useState([]);
+  const [unsolvedLinks, setUnsolvedLinks] = useState([]);
+  const [Partial, setPartial] = useState(0);
+  const [Average, SetAverage] = useState(0);
+  const [image, Setimage] = useState("");
+  const [about, SetAbout] = useState("");
+  const [name, SetName] = useState("");
+  const [work, SetWork] = useState("");
+  const [org, Setorg] = useState("");
+  const [city, Setcity] = useState("");
+  const [state, Setstate] = useState("");
+  const [country, setCountry] = useState("");
+  const [global_rank, setGlobalrank] = useState(0);
+  const [country_rank, setCountryrank] = useState(0);
   function loader(enteredUsername) {
-    // setStats([]);
-    // Setrating([]);
-    // SetBestrank([0]);
-    // Setworstrank([0]);
-    // setMaxdown([0]);
-    // setmaxup([0]);
-    // Setcontests([0]);
-
     Setuser(enteredUsername);
     setStats([]);
     Setrating([]);
@@ -42,15 +45,25 @@ function SingleUser() {
     setMaxdown([0]);
     setmaxup([0]);
     Setcontests([0]);
-    if(counter[0]===0) Setcounter([1]);
+    if (counter[0] === 0) Setcounter([1]);
     else Setcounter([0]);
     Settried(0);
     SetAverage(0);
     setSolved(0);
     setUnsolved(0);
     setPartial(0);
+    Setimage("");
+    SetAbout("");
     setpartialLinks([]);
     setUnsolvedLinks([]);
+    SetName("");
+    SetWork("");
+    Setorg("");
+	Setcity("");
+	Setstate("");
+    setCountry("");
+	setGlobalrank(0);
+	setCountryrank(0);
   }
   function getRatingData(UserName) {
     var ratings = [],
@@ -65,15 +78,42 @@ function SingleUser() {
         UserName,
       (error, response, html) => {
         if (!error && response.statusCode === 200) {
+          var front = "https://s3.amazonaws.com/codechef_shared";
           var $ = cheerio.load(html);
           var Str = $("body");
           Str = Str.html();
           Str = Str.toString();
+          var Str1 = Str;
+          var abtStr = Str;
           let index = Str.indexOf("all_rating");
           Str = Str.slice(index);
           let index1 = Str.indexOf("[{");
           index = Str.indexOf("}]");
           var S = Str.slice(index1, index + 2);
+
+          let sitesvar = Str1.indexOf("/sites/d");
+          Str1 = Str1.slice(sitesvar);
+          console.log(sitesvar);
+          let img_index = Str1.indexOf("jpg");
+          console.log(img_index);
+          var back = Str1.slice(0, img_index + 3);
+          var Pic = front + back;
+          if (img_index === -1)
+            Pic =
+              "https://cdn.codechef.com/sites/all/themes/abessive/images/user_default_thumb.jpg";
+          Pic = Pic.toString();
+          console.log(Pic, back);
+          let abtMe = abtStr.indexOf("About Me:");
+          console.log(abtMe);
+          var abt;
+          if (abtMe === -1) {
+            abt = "";
+          } else {
+            abtStr = abtStr.slice(abtMe + 23);
+            abtMe = abtStr.indexOf("</");
+            abt = abtStr.slice(0, abtMe);
+          }
+          console.log(abt);
           var req = JSON.parse(S);
           var best, worst, maxUp, maxDown;
           for (var i = 0; i < req.length; i++) {
@@ -103,6 +143,8 @@ function SingleUser() {
           Setworstrank(Worst);
           Setrating(ratings);
           setDATE(dates);
+          Setimage(Pic);
+          SetAbout(abt);
         }
       }
     );
@@ -112,7 +154,7 @@ function SingleUser() {
     console.log(user);
     var headers = {
       Accept: "application/json",
-      Authorization: "Bearer e34007671176242e09349591d3c570288002afa2",
+      Authorization: "Bearer c52927d7b42efdea61ad68beb5a7fee2877e0b32",
     };
     var UserName = user;
     const url =
@@ -123,8 +165,16 @@ function SingleUser() {
       .get(url, { headers: headers })
       .then((res) => res)
       .then(
-        (res) => {          
+        (res) => {
           if (res.data.result.data.code === 9001) {
+            var Name = res.data.result.data.content.fullname;
+            var Occu = res.data.result.data.content.occupation;
+            var Org = res.data.result.data.content.organization;
+            var Country = res.data.result.data.content.country.name;
+            var userCity = res.data.result.data.content.city.name;
+            var userState = res.data.result.data.content.state.name;
+			var gb_rank = res.data.result.data.content.rankings.allContestRanking.global;
+			var cntry_rank = res.data.result.data.content.rankings.allContestRanking.country;
             var sol = [];
             sol.push(
               res.data.result.data.content.submissionStats.acceptedSubmissions
@@ -143,52 +193,51 @@ function SingleUser() {
               res.data.result.data.content.submissionStats
                 .partiallySolvedSubmissions
             );
-            var m1=new Map();
-            var avg=0;
-            var PartialCodes=[];
-            var solved=0;
-            var tried=0;
-            var unsolved=0;
-            var PartiallySolved=0;
-            var x,y,z;
-            x=res.data.result.data.content.problemStats.partiallySolved;
-            y=res.data.result.data.content.problemStats.solved
-            z=res.data.result.data.content.problemStats.attempted
-            avg=res.data.result.data.content.submissionStats.submittedSolutions;
-           // console.log(avg);
-        
-            for(const item in x){
-              PartiallySolved=PartiallySolved+x[item].length;
-              for (var i=0;i<x[item].length;i++){
+            var m1 = new Map();
+            var avg = 0;
+            var PartialCodes = [];
+            var solved = 0;
+            var tried = 0;
+            var unsolved = 0;
+            var PartiallySolved = 0;
+            var x, y, z;
+            x = res.data.result.data.content.problemStats.partiallySolved;
+            y = res.data.result.data.content.problemStats.solved;
+            z = res.data.result.data.content.problemStats.attempted;
+            avg =
+              res.data.result.data.content.submissionStats.submittedSolutions;
+            // console.log(avg);
+
+            for (const item in x) {
+              PartiallySolved = PartiallySolved + x[item].length;
+              for (var i = 0; i < x[item].length; i++) {
                 PartialCodes.push(x[item][i]);
               }
             }
-            for(const item in y){
-              solved=solved+y[item].length;
-              for(var j=0;j<y[item].length;j++){
-                m1.set(y[item][j],1);
+            for (const item in y) {
+              solved = solved + y[item].length;
+              for (var j = 0; j < y[item].length; j++) {
+                m1.set(y[item][j], 1);
               }
             }
-            var Unsolved=[];
+            var Unsolved = [];
 
-            for(const item in z){
-             
-              for(var k=0;k<z[item].length;k++){
-                if(!m1.get(z[item][k])){
+            for (const item in z) {
+              for (var k = 0; k < z[item].length; k++) {
+                if (!m1.get(z[item][k])) {
                   Unsolved.push(z[item][k]);
-                  unsolved=unsolved+1;
+                  unsolved = unsolved + 1;
                 }
-                
               }
             }
-      
-            solved=solved-PartiallySolved;
-            tried=solved+unsolved+PartiallySolved;
-            if(avg){
-              avg=avg/solved;
+
+            solved = solved - PartiallySolved;
+            tried = solved + unsolved + PartiallySolved;
+            if (avg) {
+              avg = avg / solved;
             }
-            avg=(Math.round(avg*100))/100;
-        
+            avg = Math.round(avg * 100) / 100;
+
             setStats(sol);
             Settried(tried);
             setSolved(solved);
@@ -197,7 +246,14 @@ function SingleUser() {
             setUnsolvedLinks(Unsolved);
             setPartial(PartiallySolved);
             SetAverage(avg);
-
+            SetName(Name);
+            Setorg(Org);
+            SetWork(Occu);
+			Setcity(userCity);
+			Setstate(userState);
+            setCountry(Country);
+			setGlobalrank(gb_rank);
+			setCountryrank(cntry_rank);
           } else {
             setStats([]);
             alert("Enter correct Codechef username");
@@ -213,39 +269,56 @@ function SingleUser() {
     [x, y, a, b] = getRatingData(user);
     console.log(x, y, a, b);
     console.log(user);
-  }, [user,counter]);
+  }, [user, counter]);
 
   return (
     <>
       <SingleUserForm OnSubmit={loader} />
       {user ? (
         <>
-        <div>Bestrank={bestrank}</div>
-           <div>Worstrank={worstrank}</div>
-           <div>MaxUp={MaxUp}</div>
-           <div>Maxdown={Maxdown}</div>
+          {/* {console.log(image)} */}
+          <img src={image}></img>
+          {about ? <div>About me: {about}</div> : <></>}
+          <div>
+            <a
+              href={
+                "https://www.codechef.com/users/" + user.toString() + "/teams"
+              }
+            >
+              Teams
+            </a>
+          </div>
+          <div>FullName: {name}</div>
+          <div>UserName: {user}</div>
+          {work ? <div>Occupation: {work}</div>:<></>}
+          {org ? <div>Organization: {org}</div>:<></>}
+          <div>Country={country}</div>
+          <div>State:{state}</div>
+          <div>City:{city}</div>
+		  <div>Global Rank={global_rank}</div>
+		  <div>Country Rank={country_rank}</div>
+          <div>Bestrank={bestrank}</div>
+          <div>Worstrank={worstrank}</div>
+          <div>MaxUp={MaxUp}</div>
+          <div>Maxdown={Maxdown}</div>
           <div>Total Contests={contests}</div>
           <div>Tried={Tried}</div>
           <div>solved={Solved}</div>
           <div>PartiallySolved={Partial}</div>
           <div>Average attempts={Average}</div>
           <div>unsolved={UnSolved}</div>
-          {
-            partialLinks.map(Partial=>(
-              
-               <a href={"https://www.codechef.com/problems/"+Partial}>{Partial}<br></br></a>
-               
-          
-            ))
-          }
-          {
-            unsolvedLinks.map(unsolved=>(
-              
-               <a href={"https://www.codechef.com/problems/"+unsolved}>{unsolved}<br></br></a>
-               
-          
-            ))
-          }
+          {partialLinks.map((Partial) => (
+            <a href={"https://www.codechef.com/problems/" + Partial}>
+              {Partial}
+              <br></br>
+            </a>
+          ))}
+          {unsolvedLinks.map((unsolved) => (
+            <a href={"https://www.codechef.com/problems/" + unsolved}>
+              {unsolved}
+              <br></br>
+            </a>
+          ))}
           <div>
             <DoughnutChart data={stats} />
           </div>
