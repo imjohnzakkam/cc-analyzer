@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 import axios from "axios";
 
+import ClistTop5 from "../components/layout/Top5";
 import SingleUserForm from "../components/formdata/SingleUserForm";
 import DoughnutChart from "../components/DoughnutChart";
 import RatingGraph from "../components/RatingGraph";
@@ -36,6 +37,7 @@ function SingleUser() {
   const [country, setCountry] = useState("");
   const [global_rank, setGlobalrank] = useState(0);
   const [country_rank, setCountryrank] = useState(0);
+  const [flag,Setflag]=useState(0);
   function loader(enteredUsername) {
     Setuser(enteredUsername);
     setStats([]);
@@ -64,6 +66,7 @@ function SingleUser() {
     setCountry("");
 	setGlobalrank(0);
 	setCountryrank(0);
+  Setflag(1);
   }
   function getRatingData(UserName) {
     var ratings = [],
@@ -273,6 +276,7 @@ function SingleUser() {
   return (
     <>
       <SingleUserForm OnSubmit={loader} />
+	    {!flag?<ClistTop5 />:<></>}
       {user ? (
         <>
           <img src={image} alt="user_image"></img>

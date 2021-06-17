@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import HomePage from "./pages/HomePage";
 import SingleUser from "./pages/SingleUser";
 import Layout from "./components/layout/Layout";
 
@@ -11,7 +10,7 @@ function App() {
         <Layout>
           <Switch>
             <Route path="/" exact>
-              <HomePage />
+              <SingleUser />
             </Route>
             <Route path="/single_user">
               <SingleUser />

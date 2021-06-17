@@ -4,11 +4,14 @@ import { Container, Form, Button } from "react-bootstrap";
 
 function SingleUserForm(props) {
   const usernameRef = useRef();
-  const [, setUserName] = useState(null);
+  const [Username, setUserName] = useState(null);
   function submitHandler(event) {
     event.preventDefault();
+    //alert("well");
     const enteredUsername = usernameRef.current.value;
+    //console.log(props.OnSubmit);
     props.OnSubmit(enteredUsername);
+    console.log(enteredUsername);
     setUserName(enteredUsername);
   }
 
