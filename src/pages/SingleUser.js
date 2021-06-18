@@ -6,6 +6,8 @@ import SingleUserForm from "../components/formdata/SingleUserForm";
 import DoughnutChart from "../components/DoughnutChart";
 import RatingGraph from "../components/RatingGraph";
 import ProfileCard from "../components/ProfileCard";
+import StatsCard from "../components/StatsCard";
+import UnsolvedProbs from "../components/UnsolvedProbs";
 
 const request = require("request");
 const cheerio = require("cheerio");
@@ -159,7 +161,7 @@ function SingleUser() {
     console.log(user);
     var headers = {
       Accept: "application/json",
-      Authorization: "Bearer e791a11f37fee44ffbd03d587f25db6b8d1c5bb9",
+      Authorization: "Bearer 6037ea25bcb0022000245e271a1039f9d4625267",
     };
     var UserName = user;
     console.log(user);
@@ -279,7 +281,7 @@ function SingleUser() {
     console.log(x, y, a, b);
     console.log(user);
    
-  }, [counter]);
+  }, [user, counter]);
 
 
   
@@ -293,11 +295,33 @@ function SingleUser() {
 			img = {image}
 			username = {user} 
 			fullname = {name}
+			city = {city}
+			state = {state}
+			country = {country}
 			occupation = {work}
 			organization = {org}
 			abt = {about}
 			/>
-          <img src={image} alt="user_image"></img>
+			<StatsCard 
+				gb_rank = {global_rank}
+				cntry_rank = {country_rank}
+				best_rank = {bestrank}
+				worst_rank = {worstrank}
+				maxup = {MaxUp}
+				maxdown = {Maxdown}
+				total_contests = {contests}
+				tried = {Tried}
+				solved = {Solved}
+				partial = {Partial}
+				avg = {Average}
+				unsolved = {UnSolved}
+			/>
+			<UnsolvedProbs 
+				partialLinks = {partialLinks}
+				unsolvedLinks = {unsolvedLinks}
+			/>
+
+          {/* <img src={image} alt="user_image"></img>
           {about ? <div>About me: {about}</div> : <></>}
           <div>
             <a
@@ -338,7 +362,7 @@ function SingleUser() {
               {unsolved}
               <br></br>
             </a>
-          ))}
+          ))} */}
           <div>
             <DoughnutChart data={stats} />
           </div>

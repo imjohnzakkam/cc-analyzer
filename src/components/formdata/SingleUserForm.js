@@ -1,10 +1,10 @@
-import { useRef} from "react";
+import { useRef } from "react";
 
 import { Container, Form, Button } from "react-bootstrap";
 
 function SingleUserForm(props) {
   const usernameRef = useRef();
- // const [Username, setUserName] = useState(null);
+  // const [Username, setUserName] = useState(null);
   function submitHandler(event) {
     event.preventDefault();
     //alert("well");
@@ -12,7 +12,7 @@ function SingleUserForm(props) {
     //console.log(props.OnSubmit);
     props.OnSubmit(enteredUsername);
     console.log(enteredUsername);
-  //  setUserName(enteredUsername);
+    //  setUserName(enteredUsername);
   }
 
   return (
@@ -25,16 +25,17 @@ function SingleUserForm(props) {
               type="text"
               required
               placeholder="Enter CodeChef Username"
+              className="placeholder-gray-600 focus:placeholder-gray-400"
               ref={usernameRef}
             />
           </Form.Group>
-
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
+          <div className="pt-2 pb-2">
+            <Button variant="primary" type="submit">
+              Submit
+            </Button>
+          </div>
         </Form>
       </Container>
-      
     </>
   );
 }

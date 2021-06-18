@@ -14,7 +14,7 @@ function classNames(...classes) {
 
 export default function NavigatonBar() {
   return (
-    <Disclosure as="nav" className="bg-blue-400">
+    <Disclosure as="nav" className="bg-gradient-to-r from-green-400 to-blue-500">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -50,9 +50,9 @@ export default function NavigatonBar() {
                         to={item.href}
                         className={classNames(
                           item.current
-                            ? "bg-purple-900 text-red-500"
-                            : "text-yellow-300 hover:bg-yellow-700 hover:text-white",
-                          "px-3 py-2 rounded-md text-sm font-medium"
+                            ? "bg-bg-blue-400 text-red-500"
+                            : "text-black hover:bg-blue-800 hover:text-white",
+                          "rounded-full px-3 py-2 rounded-md text-md no-underline font-custom font-semibold"
                         )}
                         aria-current={item.current ? "page" : undefined}
                       >

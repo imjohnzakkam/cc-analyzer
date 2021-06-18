@@ -1,7 +1,7 @@
 import NavigationBar from './NavigationBar';
 
 function Layout(props) {
-  return <div>
+  return <div className="font-custom">
 	<NavigationBar />
 	<main>
 		{props.children}
