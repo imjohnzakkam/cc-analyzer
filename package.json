@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^6.1.2",
+    "@headlessui/react": "^1.2.0",
+    "@heroicons/react": "^1.0.1",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "autoprefixer": "^9.8.6",
     "axios": "^0.21.1",
     "bootstrap": "^5.0.1",
     "chart.js": "^3.3.2",
@@ -14,6 +18,7 @@
     "fetch": "^1.1.0",
     "jquery": "^3.6.0",
     "node-fetch": "^2.6.1",
+    "postcss": "^7.0.36",
     "puppeteer": "^10.0.0",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.0",
@@ -22,13 +27,14 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "request": "^2.88.2",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.0",
     "web-vitals": "^1.1.2",
     "xmlhttprequest": "^1.8.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject"
   },
   "proxy": "http://localhost:3000",
@@ -49,5 +55,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {}
 }

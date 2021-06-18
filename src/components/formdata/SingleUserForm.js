@@ -1,10 +1,10 @@
-import { useRef, useState } from "react";
+import { useRef} from "react";
 
 import { Container, Form, Button } from "react-bootstrap";
 
 function SingleUserForm(props) {
   const usernameRef = useRef();
-  const [Username, setUserName] = useState(null);
+ // const [Username, setUserName] = useState(null);
   function submitHandler(event) {
     event.preventDefault();
     //alert("well");
@@ -12,7 +12,7 @@ function SingleUserForm(props) {
     //console.log(props.OnSubmit);
     props.OnSubmit(enteredUsername);
     console.log(enteredUsername);
-    setUserName(enteredUsername);
+  //  setUserName(enteredUsername);
   }
 
   return (

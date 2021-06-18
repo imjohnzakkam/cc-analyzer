@@ -1,10 +1,11 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect} from "react";
 import axios from "axios";
 
 import ClistTop5 from "../components/layout/Top5";
 import SingleUserForm from "../components/formdata/SingleUserForm";
 import DoughnutChart from "../components/DoughnutChart";
 import RatingGraph from "../components/RatingGraph";
+import ProfileCard from "../components/ProfileCard";
 
 const request = require("request");
 const cheerio = require("cheerio");
@@ -19,7 +20,7 @@ function SingleUser() {
   const [MaxUp, setmaxup] = useState([]);
   const [Maxdown, setMaxdown] = useState([]);
   const [contests, Setcontests] = useState([]);
-  const [counter, Setcounter] = useState([]);
+  const [counter, Setcounter] = useState(0);
   const [Solved, setSolved] = useState(0);
   const [UnSolved, setUnsolved] = useState(0);
   const [Tried, Settried] = useState(0);
@@ -39,6 +40,7 @@ function SingleUser() {
   const [country_rank, setCountryrank] = useState(0);
   const [flag,Setflag]=useState(0);
   function loader(enteredUsername) {
+    Setuser("");
     Setuser(enteredUsername);
     setStats([]);
     Setrating([]);
@@ -47,8 +49,7 @@ function SingleUser() {
     setMaxdown([0]);
     setmaxup([0]);
     Setcontests([0]);
-    if (counter[0] === 0) Setcounter([1]);
-    else Setcounter([0]);
+    Setcounter(1);
     Settried(0);
     SetAverage(0);
     setSolved(0);
@@ -61,12 +62,12 @@ function SingleUser() {
     SetName("");
     SetWork("");
     Setorg("");
-	Setcity("");
-	Setstate("");
+	  Setcity("");
+	  Setstate("");
     setCountry("");
-	setGlobalrank(0);
-	setCountryrank(0);
-  Setflag(1);
+	  setGlobalrank(0);
+	  setCountryrank(0);
+    Setflag(1);
   }
   function getRatingData(UserName) {
     var ratings = [],
@@ -148,6 +149,7 @@ function SingleUser() {
           setDATE(dates);
           Setimage(Pic);
           SetAbout(abt);
+
         }
       }
     );
@@ -157,9 +159,10 @@ function SingleUser() {
     console.log(user);
     var headers = {
       Accept: "application/json",
-      Authorization: "Bearer d65690f2a80843347619df6e9801573d4f2e737b",
+      Authorization: "Bearer e791a11f37fee44ffbd03d587f25db6b8d1c5bb9",
     };
     var UserName = user;
+    console.log(user);
     const url =
       "https://api.codechef.com/users/" +
       UserName +
@@ -176,8 +179,8 @@ function SingleUser() {
             var Country = res.data.result.data.content.country.name;
             var userCity = res.data.result.data.content.city.name;
             var userState = res.data.result.data.content.state.name;
-			var gb_rank = res.data.result.data.content.rankings.allContestRanking.global;
-			var cntry_rank = res.data.result.data.content.rankings.allContestRanking.country;
+			      var gb_rank = res.data.result.data.content.rankings.allContestRanking.global;
+			      var cntry_rank = res.data.result.data.content.rankings.allContestRanking.country;
             var sol = [];
             sol.push(
               res.data.result.data.content.submissionStats.acceptedSubmissions
@@ -251,16 +254,20 @@ function SingleUser() {
             SetName(Name);
             Setorg(Org);
             SetWork(Occu);
-			Setcity(userCity);
-			Setstate(userState);
+			     Setcity(userCity);
+			      Setstate(userState);
             setCountry(Country);
-			setGlobalrank(gb_rank);
-			setCountryrank(cntry_rank);
+			      setGlobalrank(gb_rank);
+			     setCountryrank(cntry_rank);
+           Setcounter(2);
+     
           } else {
-            setStats([]);
-            alert("Enter correct Codechef username");
-            Setuser(null);
-            return;
+  
+       Setcounter(2);
+      
+  			Setuser(null);
+        alert("Enter correct Codechef username"); 
+	                       
           }
         },
         (error) => {
@@ -271,14 +278,25 @@ function SingleUser() {
     [x, y, a, b] = getRatingData(user);
     console.log(x, y, a, b);
     console.log(user);
-  }, [user, counter]);
+   
+  }, [counter]);
 
+
+  
   return (
     <>
       <SingleUserForm OnSubmit={loader} />
 	    {!flag?<ClistTop5 />:<></>}
-      {user ? (
+      {(user && counter===2)? (
         <>
+			<ProfileCard 
+			img = {image}
+			username = {user} 
+			fullname = {name}
+			occupation = {work}
+			organization = {org}
+			abt = {about}
+			/>
           <img src={image} alt="user_image"></img>
           {about ? <div>About me: {about}</div> : <></>}
           <div>
