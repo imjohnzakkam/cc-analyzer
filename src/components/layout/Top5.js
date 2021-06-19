@@ -63,7 +63,7 @@ function ClistTop5() {
               <tr>
                 <td>{id + 1}</td>
                 <td>
-                  <a href={link[id]}>{Top}</a>
+                  <a href={link[id]} target="blank">{Top}</a>
                 </td>
                 <td>{start[id]}</td>
                 <td>{end[id]}</td>

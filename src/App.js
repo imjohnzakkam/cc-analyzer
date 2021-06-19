@@ -1,6 +1,8 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import SingleUser from "./pages/SingleUser";
+import CompareUsers from "./pages/CompareUsers";
+
 import Layout from "./components/layout/Layout";
 
 function App() {
@@ -12,11 +14,8 @@ function App() {
             <Route path="/" exact>
               <SingleUser />
             </Route>
-            <Route path="/single_user">
-              <SingleUser />
-            </Route>
-            <Route path="/compare_users">
-              <div>Hi compare_users</div>
+            <Route path="/compare">
+              <CompareUsers />
             </Route>
             <Route path="/feedback">
               <div>Hi feedback</div>

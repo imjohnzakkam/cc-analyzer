@@ -1,4 +1,4 @@
-import { React, useState, useEffect} from "react";
+import { React, useState, useEffect } from "react";
 import axios from "axios";
 
 import ClistTop5 from "../components/layout/Top5";
@@ -8,7 +8,6 @@ import RatingGraph from "../components/RatingGraph";
 import ProfileCard from "../components/ProfileCard";
 import StatsCard from "../components/StatsCard";
 import UnsolvedProbs from "../components/UnsolvedProbs";
-import Alert from "../components/Alert";
 
 const request = require("request");
 const cheerio = require("cheerio");
@@ -41,7 +40,7 @@ function SingleUser() {
   const [country, setCountry] = useState("");
   const [global_rank, setGlobalrank] = useState(0);
   const [country_rank, setCountryrank] = useState(0);
-  const [flag,Setflag]=useState(0);
+  const [flag, Setflag] = useState(0);
   function loader(enteredUsername) {
     Setuser("");
     Setuser(enteredUsername);
@@ -52,7 +51,7 @@ function SingleUser() {
     setMaxdown([0]);
     setmaxup([0]);
     Setcontests([0]);
-    Setcounter(1);
+    Setcounter(1 - counter);
     Settried(0);
     SetAverage(0);
     setSolved(0);
@@ -65,11 +64,11 @@ function SingleUser() {
     SetName("");
     SetWork("");
     Setorg("");
-	  Setcity("");
-	  Setstate("");
+    Setcity("");
+    Setstate("");
     setCountry("");
-	  setGlobalrank(0);
-	  setCountryrank(0);
+    setGlobalrank(0);
+    setCountryrank(0);
     Setflag(1);
   }
   function getRatingData(UserName) {
@@ -152,7 +151,6 @@ function SingleUser() {
           setDATE(dates);
           Setimage(Pic);
           SetAbout(abt);
-
         }
       }
     );
@@ -162,7 +160,7 @@ function SingleUser() {
     console.log(user);
     var headers = {
       Accept: "application/json",
-      Authorization: "Bearer ad0064e6644c867be73bb22693fab3b2f464b405",
+      Authorization: "Bearer ffa39494fc9fa3c29e5e0d0642cd68122112e95b",
     };
     var UserName = user;
     console.log(user);
@@ -182,8 +180,10 @@ function SingleUser() {
             var Country = res.data.result.data.content.country.name;
             var userCity = res.data.result.data.content.city.name;
             var userState = res.data.result.data.content.state.name;
-			      var gb_rank = res.data.result.data.content.rankings.allContestRanking.global;
-			      var cntry_rank = res.data.result.data.content.rankings.allContestRanking.country;
+            var gb_rank =
+              res.data.result.data.content.rankings.allContestRanking.global;
+            var cntry_rank =
+              res.data.result.data.content.rankings.allContestRanking.country;
             var sol = [];
             sol.push(
               res.data.result.data.content.submissionStats.acceptedSubmissions
@@ -257,20 +257,17 @@ function SingleUser() {
             SetName(Name);
             Setorg(Org);
             SetWork(Occu);
-			     Setcity(userCity);
-			      Setstate(userState);
+            Setcity(userCity);
+            Setstate(userState);
             setCountry(Country);
-			      setGlobalrank(gb_rank);
-			     setCountryrank(cntry_rank);
-           Setcounter(2);
-     
+            setGlobalrank(gb_rank);
+            setCountryrank(cntry_rank);
+            Setcounter(2);
           } else {
-  
-       Setcounter(2);
-      
-  			Setuser(null);
-        alert("Enter correct Codechef username"); 
-	        <Alert />
+            // Setcounter(2);
+            Setuser(null);
+            alert("Enter correct Codechef username");
+            // <Alert />
           }
         },
         (error) => {
@@ -281,89 +278,43 @@ function SingleUser() {
     [x, y, a, b] = getRatingData(user);
     console.log(x, y, a, b);
     console.log(user);
-   
   }, [user, counter]);
 
-
-  
   return (
     <>
       <SingleUserForm OnSubmit={loader} />
-	    {!flag?<ClistTop5 />:<></>}
-      {(user && counter===2)? (
+      {!flag ? <ClistTop5 /> : <></>}
+      {user && counter === 2 ? (
         <>
-			<ProfileCard 
-			img = {image}
-			username = {user} 
-			fullname = {name}
-			city = {city}
-			state = {state}
-			country = {country}
-			occupation = {work}
-			organization = {org}
-			abt = {about}
-			/>
-			<StatsCard 
-				gb_rank = {global_rank}
-				cntry_rank = {country_rank}
-				best_rank = {bestrank}
-				worst_rank = {worstrank}
-				maxup = {MaxUp}
-				maxdown = {Maxdown}
-				total_contests = {contests}
-				tried = {Tried}
-				solved = {Solved}
-				partial = {Partial}
-				avg = {Average}
-				unsolved = {UnSolved}
-			/>
-			<UnsolvedProbs 
-				partialLinks = {partialLinks}
-				unsolvedLinks = {unsolvedLinks}
-			/>
-
-          {/* <img src={image} alt="user_image"></img>
-          {about ? <div>About me: {about}</div> : <></>}
-          <div>
-            <a
-              href={
-                "https://www.codechef.com/users/" + user.toString() + "/teams"
-              }
-            >
-              Teams
-            </a>
-          </div>
-          <div>FullName: {name}</div>
-          <div>UserName: {user}</div>
-          {work ? <div>Occupation: {work}</div>:<></>}
-          {org ? <div>Organization: {org}</div>:<></>}
-          <div>Country={country}</div>
-          <div>State:{state}</div>
-          <div>City:{city}</div>
-		  <div>Global Rank={global_rank}</div>
-		  <div>Country Rank={country_rank}</div>
-          <div>Bestrank={bestrank}</div>
-          <div>Worstrank={worstrank}</div>
-          <div>MaxUp={MaxUp}</div>
-          <div>Maxdown={Maxdown}</div>
-          <div>Total Contests={contests}</div>
-          <div>Tried={Tried}</div>
-          <div>solved={Solved}</div>
-          <div>PartiallySolved={Partial}</div>
-          <div>Average attempts={Average}</div>
-          <div>unsolved={UnSolved}</div>
-          {partialLinks.map((Partial) => (
-            <a href={"https://www.codechef.com/problems/" + Partial}>
-              {Partial}
-              <br></br>
-            </a>
-          ))}
-          {unsolvedLinks.map((unsolved) => (
-            <a href={"https://www.codechef.com/problems/" + unsolved}>
-              {unsolved}
-              <br></br>
-            </a>
-          ))} */}
+          <ProfileCard
+            img={image}
+            username={user}
+            fullname={name}
+            city={city}
+            state={state}
+            country={country}
+            occupation={work}
+            organization={org}
+            abt={about}
+          />
+          <StatsCard
+            gb_rank={global_rank}
+            cntry_rank={country_rank}
+            best_rank={bestrank}
+            worst_rank={worstrank}
+            maxup={MaxUp}
+            maxdown={Maxdown}
+            total_contests={contests}
+            tried={Tried}
+            solved={Solved}
+            partial={Partial}
+            avg={Average}
+            unsolved={UnSolved}
+          />
+          <UnsolvedProbs
+            partialLinks={partialLinks}
+            unsolvedLinks={unsolvedLinks}
+          />
           <div>
             <DoughnutChart data={stats} />
           </div>

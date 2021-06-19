@@ -19,6 +19,10 @@ export default function RatingGraph(props) {
                     label: "Rating",
                     data: data,
                     borderWidth: 2,
+					borderColor: 'rgba(0, 151, 255, 1)',
+					hoverBackgroundColor : 'rgba(0, 0, 0, 1)',
+					pointRadius: 3,
+					pointHoverBackgroundColor: 'rgba(0, 0, 0, 1)'
                   },
                 ],
               }}
@@ -27,12 +31,23 @@ export default function RatingGraph(props) {
               options={{
                 maintainAspectRatio: false,
                 scales: {
-                  xAxes: [
-                    {
-                      type: "time",					  
+                  x: {
+                    ticks: {
+                      display: false
                     },
-                  ],
+					grid: {
+						display: false
+					}
+                  }
                 },
+				plugins: {
+                    legend: {
+                      position: "bottom",
+                    },
+                },
+				layout: {
+            		padding: 20
+        		}
               }}
             />
           </div>
