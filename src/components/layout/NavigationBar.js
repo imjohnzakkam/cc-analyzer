@@ -52,7 +52,7 @@ export default function NavigatonBar() {
                           item.current
                             ? "bg-bg-blue-400 text-red-500"
                             : "text-black hover:bg-blue-800 hover:text-white",
-                          "rounded-full px-3 py-2 rounded-md text-md no-underline font-custom font-semibold"
+                          "rounded-full px-3 py-2 text-md no-underline font-custom font-semibold"
                         )}
                         aria-current={item.current ? "page" : undefined}
                       >

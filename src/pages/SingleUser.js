@@ -8,6 +8,7 @@ import RatingGraph from "../components/RatingGraph";
 import ProfileCard from "../components/ProfileCard";
 import StatsCard from "../components/StatsCard";
 import UnsolvedProbs from "../components/UnsolvedProbs";
+import Alert from "../components/Alert";
 
 const request = require("request");
 const cheerio = require("cheerio");
@@ -161,7 +162,7 @@ function SingleUser() {
     console.log(user);
     var headers = {
       Accept: "application/json",
-      Authorization: "Bearer 6037ea25bcb0022000245e271a1039f9d4625267",
+      Authorization: "Bearer ad0064e6644c867be73bb22693fab3b2f464b405",
     };
     var UserName = user;
     console.log(user);
@@ -269,7 +270,7 @@ function SingleUser() {
       
   			Setuser(null);
         alert("Enter correct Codechef username"); 
-	                       
+	        <Alert />
           }
         },
         (error) => {

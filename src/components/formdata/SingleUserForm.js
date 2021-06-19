@@ -17,7 +17,7 @@ function SingleUserForm(props) {
 
   return (
     <>
-      <Container className="pt-4 text-center" style={{ width: "28rem" }}>
+      <Container className="pt-4 text-center" style={{ width: "28rem" }}> 
         <Form onSubmit={submitHandler}>
           <Form.Group controlId="formUsername">
             <Form.Label>CodeChef Username</Form.Label>
@@ -30,7 +30,7 @@ function SingleUserForm(props) {
             />
           </Form.Group>
           <div className="pt-2 pb-2">
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" className="rounded-full px-3 py-2">
               Submit
             </Button>
           </div>

@@ -7,13 +7,13 @@ export default function StatsCard(props) {
         </div>
           <div className="grid grid-cols-3 gap-2 place-items-center font-medium p-4">
             {props.partialLinks.map((Partial) => (
-              <a href={"https://www.codechef.com/problems/" + Partial}>
+              <a href={"https://www.codechef.com/problems/" + Partial} className="text-yellow-400 hover:text-yellow-400 no-underline hover:underline" target="blank">
                 {Partial}
                 <br></br>
               </a>
             ))}
             {props.unsolvedLinks.map((unsolved) => (
-              <a href={"https://www.codechef.com/problems/" + unsolved}>
+              <a href={"https://www.codechef.com/problems/" + unsolved} className="text-red-400 hover:text-red-400 no-underline hover:underline" target="blank">
                 {unsolved}
                 <br></br>
               </a>
