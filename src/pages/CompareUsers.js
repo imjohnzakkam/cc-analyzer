@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect,prevState} from "react";
 import axios from "axios";
 
 import DoubleUserForm from "../components/formdata/DoubleUserForm";
@@ -121,7 +121,7 @@ function CompareUsers() {
     setF(0);
     setGlobalrank2(0);
     setCountryrank2(0);
-    Setcounter(1 - counter);
+    Setcounter(1-counter);
   }
   function getRatingData(UserName) {
     var ratings = [],
@@ -151,18 +151,18 @@ function CompareUsers() {
 
           let sitesvar = Str1.indexOf("/sites/d");
           Str1 = Str1.slice(sitesvar);
-         // console.log(sitesvar);
+  
           let img_index = Str1.indexOf("jpg");
-         // console.log(img_index);
+        
           var back = Str1.slice(0, img_index + 3);
           var Pic = front + back;
           if (img_index === -1)
             Pic =
               "https://cdn.codechef.com/sites/all/themes/abessive/images/user_default_thumb.jpg";
           Pic = Pic.toString();
-        //  console.log(Pic, back);
+      
           let abtMe = abtStr.indexOf("About Me:");
-        //  console.log(abtMe);
+
           var abt;
           if (abtMe === -1) {
             abt = "";
@@ -171,7 +171,7 @@ function CompareUsers() {
             abtMe = abtStr.indexOf("</");
             abt = abtStr.slice(0, abtMe);
           }
-        //  console.log(abt);
+    
           var req = JSON.parse(S);
           var best, worst, maxUp, maxDown;
           for (var i = 0; i < req.length; i++) {
@@ -220,14 +220,14 @@ function CompareUsers() {
     );
   }
   useEffect(() => {
-    var f=0;
-    console.log(User1);
+
+   // console.log(User1);
     var headers = {
       Accept: "application/json",
-      Authorization: "Bearer 52308a7c4f0545a714385e12688937268544b197",
+      Authorization: "Bearer 96d8730594f5de7059ac1c98c54a4742c4e528ab",
     };
     var UserName = User1;
-    //console.log(User1);
+   
     var url =
       "https://api.codechef.com/users/" +
       UserName +
@@ -237,7 +237,7 @@ function CompareUsers() {
       .then((res) => res)
       .then(
         (res) => {
-          f=1;
+     
           if (res.data.result.data.code === 9001) {
             var Name = res.data.result.data.content.fullname;
             var Occu = res.data.result.data.content.occupation;
@@ -325,11 +325,13 @@ function CompareUsers() {
             setCountry1(Country);
             setGlobalrank1(gb_rank);
             setCountryrank1(cntry_rank);
+            setF(prevState=>prevState+1);
             console.log("Wait");
+            //console.log(F);
           } else {
-            console.log("Hello");
-           setJohn(1);
-           console.log(john,"hell")
+        //    console.log("Hello");
+        //   setJohn(1);
+        //   console.log(john,"hell")
            alert("Enter correct Codechef username for user 1");
             
        }
@@ -342,18 +344,15 @@ function CompareUsers() {
           console.log(error);
         }
       );
-    console.log(User1);
+   // console.log(User1);
     
 
     UserName = User2;
-    console.log(User2);
+  //  console.log(User2);
     url =
       "https://api.codechef.com/users/" +
       UserName +
       "?fields=username%2C%20fullname%2C%20country%2C%20state%2C%20city%2C%20rankings%2C%20ratings%2C%20occupation%2C%20language%2C%20organization%2C%20problemStats%2C%20submissionStats";
-
-    if (true) {
-		console.log(f, "hi");
 
     getRatingData(User1);
       axios
@@ -450,9 +449,13 @@ function CompareUsers() {
               setCountry2(Country);
               setGlobalrank2(gb_rank);
               setCountryrank2(cntry_rank);
-              Setcounter(2);
+  
+              setF(prevState=>prevState+1);
+              console.log("Wait 1");
+             // console.log(F);
             } else {
               // Setcounter(2);
+              setF(0);
               alert("Enter correct Codechef username for user2");
             }
           },
@@ -461,15 +464,16 @@ function CompareUsers() {
           }
         );
         
-      console.log(User2);
+     // console.log(User2);
       getRatingData(User2);
-    }
+    
   }, [counter]);
   return (
     <>
       <DoubleUserForm OnSubmit={loader} />
-      {console.log(counter)}
-      {User1 && User2 && counter === 2 ? (
+     {console.log(F)}
+      {(User1 && User2) && F === 2 ? (
+        
         <>
           <ProfileCard
             img={image1}
@@ -497,6 +501,7 @@ function CompareUsers() {
       ) : (
         <></>
       )}
+     
     </>
   );
 }
