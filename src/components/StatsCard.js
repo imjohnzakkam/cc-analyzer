@@ -15,6 +15,14 @@ export default function StatsCard(props) {
               Country Rank :
               <span className="text-green-500 pl-1">{props.cntry_rank}</span>
             </div>
+			<div class="tracking-wide text-sm text-blue-500">
+              Best Rating :
+              <span className="text-green-500 pl-1">{props.max_rating}</span>
+            </div>
+			<div class="tracking-wide text-sm text-blue-500">
+              Worst Rating :
+              <span className="text-green-500 pl-1">{props.min_rating}</span>
+            </div>
             <div class="tracking-wide text-sm text-blue-500">
               Best Rank :
               <span className="text-green-500 pl-1">{props.best_rank}</span>

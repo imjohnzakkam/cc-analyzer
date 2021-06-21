@@ -1,6 +1,7 @@
 import {Link} from 'react-router-dom';
 import { Disclosure } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
+import logo from '../../images/logo.png';
 
 const navigation = [
   { name: "Home", href: "/", current: false },
@@ -13,7 +14,7 @@ function classNames(...classes) {
 }
 
 export default function NavigatonBar() {
-  return (
+  return (	
     <Disclosure as="nav" className="bg-gradient-to-r from-green-400 to-blue-500">
       {({ open }) => (
         <>
@@ -33,12 +34,12 @@ export default function NavigatonBar() {
                 <div className="flex-shrink-0 flex items-center">
                   <img
                     className="block lg:hidden h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
+                    src={logo}
                     alt="CC viz"
                   />
                   <img
                     className="hidden lg:block h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
+                    src={logo}
                     alt="CC viz"
                   />
                 </div>

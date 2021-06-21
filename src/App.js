@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import SingleUser from "./pages/SingleUser";
 import CompareUsers from "./pages/CompareUsers";
+import Feedback from "./pages/Feedback";
 
 import Layout from "./components/layout/Layout";
 
@@ -18,7 +19,7 @@ function App() {
               <CompareUsers />
             </Route>
             <Route path="/feedback">
-              <div>Hi feedback</div>
+              <Feedback />
             </Route>
           </Switch>
         </Layout>

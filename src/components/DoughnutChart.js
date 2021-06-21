@@ -14,7 +14,20 @@ function DoughnutChart(props) {
   if (x === 0) {
     lbs = [];
   }
-  //console.log(lbs);
+  if (props.data.length === 0) {
+    return (
+      <div className="pt-5">
+        <div class="max-w-md mx-auto bg-white rounded-md shadow-md overflow-hidden md:max-w-2xl w-auto font-inter font-bold">
+          <div className="text-center pt-3 pb-2 text-gray-900 uppercase font-black">
+            Verdicts Doughnut
+          </div>
+          <div class="text-center text-red-500 pb-3 pr-3 pl-3 font-semibold">
+            {props.user} no submissions ;(
+          </div>
+        </div>
+      </div>
+    );
+  }
   return (
     <>
       <div className="pt-5">

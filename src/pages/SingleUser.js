@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from "react";
 import axios from "axios";
+import { Col, Row } from "react-bootstrap";
 
 import ClistTop5 from "../components/layout/Top5";
 import SingleUserForm from "../components/formdata/SingleUserForm";
@@ -41,6 +42,10 @@ function SingleUser() {
   const [global_rank, setGlobalrank] = useState(0);
   const [country_rank, setCountryrank] = useState(0);
   const [flag, Setflag] = useState(0);
+  const [curr_rating, setCurrRating] = useState(0);
+  const [maxRating, SetMaxRating] = useState(0);
+  const [minRating, SetMinRating] = useState(0);
+
   function loader(enteredUsername) {
     Setuser("");
     Setuser(enteredUsername);
@@ -70,6 +75,9 @@ function SingleUser() {
     setGlobalrank(0);
     setCountryrank(0);
     Setflag(1);
+    setCurrRating(0);
+    SetMaxRating(0);
+    SetMinRating(0);
   }
   function getRatingData(UserName) {
     var ratings = [],
@@ -91,6 +99,7 @@ function SingleUser() {
           Str = Str.toString();
           var Str1 = Str;
           var abtStr = Str;
+          var pieChart = Str;
           let index = Str.indexOf("all_rating");
           Str = Str.slice(index);
           let index1 = Str.indexOf("[{");
@@ -101,12 +110,16 @@ function SingleUser() {
           Str1 = Str1.slice(sitesvar);
           console.log(sitesvar);
           let img_index = Str1.indexOf("jpg");
-          console.log(img_index);
+          if (img_index === -1) {
+            img_index = Str1.indexOf("png");
+          }
+          console.log(img_index, "img test");
           var back = Str1.slice(0, img_index + 3);
           var Pic = front + back;
-          if (img_index === -1)
+          if (img_index === -1) {
             Pic =
               "https://cdn.codechef.com/sites/all/themes/abessive/images/user_default_thumb.jpg";
+          }
           Pic = Pic.toString();
           console.log(Pic, back);
           let abtMe = abtStr.indexOf("About Me:");
@@ -120,7 +133,29 @@ function SingleUser() {
             abt = abtStr.slice(0, abtMe);
           }
           console.log(abt);
+          var verdicts = [];
+          var cby = pieChart.indexOf("colorByPoint:");
+          pieChart = pieChart.slice(cby);
+          cby = pieChart.indexOf("data");
+          pieChart = pieChart.slice(cby);
+          cby = pieChart.indexOf("[");
+          pieChart = pieChart.slice(cby);
+          var cby1 = pieChart.indexOf("sliced");
+          pieChart = pieChart.slice(0, cby1 - 1);
+          pieChart = pieChart + "}]";
+          for (var p = 0; p < 6; p++) {
+            cby1 = pieChart.indexOf("y:");
+            pieChart = pieChart.slice(cby1);
+            var count = "";
+            var cby2 = pieChart.indexOf(",");
+            count = pieChart.slice(2, cby2);
+            verdicts.push(parseInt(count));
+            pieChart = pieChart.slice(cby2 + 1);
+          }
+          verdicts.reverse();
           var req = JSON.parse(S);
+          var minR = 0;
+          var maxR = 0;
           var best, worst, maxUp, maxDown;
           for (var i = 0; i < req.length; i++) {
             ratings.push(parseInt(req[i].rating));
@@ -131,17 +166,22 @@ function SingleUser() {
               worst = req[i].rank;
               maxUp = 0;
               maxDown = 0;
+              minR = req[i].rating;
+              maxR = req[i].rating;
             } else {
               best = Math.min(best, ranks[i]);
               worst = Math.max(worst, ranks[i]);
               maxUp = Math.max(maxUp, ratings[i] - ratings[i - 1]);
               maxDown = Math.max(maxDown, ratings[i - 1] - ratings[i]);
+              minR = Math.min(minR, ratings[i]);
+              maxR = Math.max(maxR, ratings[i]);
             }
           }
           Best.push(best);
           Worst.push(worst);
           maxup.push(maxUp);
           maxdown.push(maxDown);
+          setStats(verdicts);
           Setcontests([req.length]);
           setmaxup(maxup);
           setMaxdown(maxdown);
@@ -151,6 +191,8 @@ function SingleUser() {
           setDATE(dates);
           Setimage(Pic);
           SetAbout(abt);
+          SetMinRating(minR);
+          SetMaxRating(maxR);
         }
       }
     );
@@ -160,7 +202,7 @@ function SingleUser() {
     console.log(user);
     var headers = {
       Accept: "application/json",
-      Authorization: "Bearer ffa39494fc9fa3c29e5e0d0642cd68122112e95b",
+      Authorization: "Bearer 2bc6d9c7ffacba5be64f8f0702c5a8b1932cc348",
     };
     var UserName = user;
     console.log(user);
@@ -210,6 +252,7 @@ function SingleUser() {
             var unsolved = 0;
             var PartiallySolved = 0;
             var x, y, z;
+            var curr = res.data.result.data.content.ratings.allContest;
             x = res.data.result.data.content.problemStats.partiallySolved;
             y = res.data.result.data.content.problemStats.solved;
             z = res.data.result.data.content.problemStats.attempted;
@@ -246,7 +289,7 @@ function SingleUser() {
             }
             avg = Math.round(avg * 100) / 100;
 
-            setStats(sol);
+            // setStats(sol);
             Settried(tried);
             setSolved(solved);
             setUnsolved(unsolved);
@@ -263,6 +306,7 @@ function SingleUser() {
             setGlobalrank(gb_rank);
             setCountryrank(cntry_rank);
             Setcounter(2);
+            setCurrRating(curr);
           } else {
             // Setcounter(2);
             Setuser(null);
@@ -286,45 +330,51 @@ function SingleUser() {
       {!flag ? <ClistTop5 /> : <></>}
       {user && counter === 2 ? (
         <>
-          <ProfileCard
-            img={image}
-            username={user}
-            fullname={name}
-            city={city}
-            state={state}
-            country={country}
-            occupation={work}
-            organization={org}
-            abt={about}
-          />
-          <StatsCard
-            gb_rank={global_rank}
-            cntry_rank={country_rank}
-            best_rank={bestrank}
-            worst_rank={worstrank}
-            maxup={MaxUp}
-            maxdown={Maxdown}
-            total_contests={contests}
-            tried={Tried}
-            solved={Solved}
-            partial={Partial}
-            avg={Average}
-            unsolved={UnSolved}
-          />
-          <UnsolvedProbs
-            partialLinks={partialLinks}
-            unsolvedLinks={unsolvedLinks}
-          />
-          <div>
-            <DoughnutChart data={stats} />
-          </div>
-          {rating.length > 0 ? (
-            <div>
-              <RatingGraph date={DATE} Rating={rating} />
-            </div>
-          ) : (
-            <div>No contests</div>
-          )}
+          <Row>
+            <Col>
+              <ProfileCard
+                img={image}
+                username={user}
+                fullname={name}
+                city={city}
+                state={state}
+                country={country}
+                occupation={work}
+                organization={org}
+                abt={about}
+                curr_rating={curr_rating}
+              />
+              <StatsCard
+                gb_rank={global_rank}
+                cntry_rank={country_rank}
+                best_rank={bestrank}
+                worst_rank={worstrank}
+                maxup={MaxUp}
+                maxdown={Maxdown}
+                total_contests={contests}
+                tried={Tried}
+                solved={Solved}
+                partial={Partial}
+                avg={Average}
+                unsolved={UnSolved}
+                max_rating={maxRating}
+                min_rating={minRating}
+              />
+              <UnsolvedProbs
+                partialLinks={partialLinks}
+                unsolvedLinks={unsolvedLinks}
+                user={user}
+              />
+            </Col>
+            <Col>
+              <div>
+                <DoughnutChart data={stats} user={user}/>
+              </div>
+              <div>
+                <RatingGraph date={DATE} Rating={rating} user={user} />
+              </div>
+            </Col>
+          </Row>
         </>
       ) : (
         <> </>

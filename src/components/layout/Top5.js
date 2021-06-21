@@ -47,8 +47,8 @@ function ClistTop5() {
 
   return (
     <>
-      <Container className="text-center pt-4 font-custom">
-        <Alert variant="success" className="shadow-md">CodeChef's upcoming 5 contests</Alert>
+      <Container className="text-center pt-4">
+        <Alert variant="info" className="shadow-md font-semibold">CodeChef's upcoming {Top5.length} contests</Alert>
         <Table striped bordered hover className="shadow-md table-auto border-solid border-4">
           <thead>
             <tr>
