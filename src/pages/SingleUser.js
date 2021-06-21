@@ -92,6 +92,7 @@ function SingleUser() {
         UserName,
       (error, response, html) => {
         if (!error && response.statusCode === 200) {
+          var fla=0;
           var front = "https://s3.amazonaws.com/codechef_shared";
           var $ = cheerio.load(html);
           var Str = $("body");
@@ -101,8 +102,13 @@ function SingleUser() {
           var abtStr = Str;
           var pieChart = Str;
           let index = Str.indexOf("all_rating");
+         // console.log(index);
           Str = Str.slice(index);
           let index1 = Str.indexOf("[{");
+          let id1=Str.indexOf("[]");
+          if(id1<index1){
+            fla=1;
+          }
           index = Str.indexOf("}]");
           var S = Str.slice(index1, index + 2);
 
@@ -133,30 +139,56 @@ function SingleUser() {
             abt = abtStr.slice(0, abtMe);
           }
           console.log(abt);
-          var verdicts = [];
+          var verdict_cnt = [],
+            names = [];
           var cby = pieChart.indexOf("colorByPoint:");
           pieChart = pieChart.slice(cby);
           cby = pieChart.indexOf("data");
           pieChart = pieChart.slice(cby);
           cby = pieChart.indexOf("[");
           pieChart = pieChart.slice(cby);
-          var cby1 = pieChart.indexOf("sliced");
-          pieChart = pieChart.slice(0, cby1 - 1);
-          pieChart = pieChart + "}]";
+          var avg = 0;
           for (var p = 0; p < 6; p++) {
-            cby1 = pieChart.indexOf("y:");
+            var cby3 = pieChart.indexOf("name:");
+            pieChart = pieChart.slice(cby3);
+            var count1 = "";
+            var cby4 = pieChart.indexOf(",");
+            count1 = pieChart.slice(6, cby4 - 1);
+            names.push(count1);
+            var cby1 = pieChart.indexOf("y:");
             pieChart = pieChart.slice(cby1);
             var count = "";
             var cby2 = pieChart.indexOf(",");
             count = pieChart.slice(2, cby2);
-            verdicts.push(parseInt(count));
+            verdict_cnt.push(parseInt(count));
+            avg = avg + parseInt(count);
             pieChart = pieChart.slice(cby2 + 1);
           }
-          verdicts.reverse();
-          var req = JSON.parse(S);
+          var verdicts = [0, 0, 0, 0, 0, 0];
+          for (var j = 0; j < 6; j++) {
+            if (names[j] === "solutions_partially_accepted") {
+              verdicts[5] = verdict_cnt[j];
+            } else if (names[j] === "time_limit_exceeded") {
+              verdicts[2] = verdict_cnt[j];
+            } else if (names[j] === "compile_error") {
+              verdicts[4] = verdict_cnt[j];
+            } else if (names[j] === "runtime_error") {
+              verdicts[3] = verdict_cnt[j];
+            } else if (names[j] === "wrong_answers") {
+              verdicts[1] = verdict_cnt[j];
+            } else verdicts[0] = verdict_cnt[j];
+          }
+          avg=avg/verdicts[0];
+          avg = Math.round(avg * 100) / 100;
           var minR = 0;
           var maxR = 0;
-          var best, worst, maxUp, maxDown;
+          var best=0; 
+          var worst=0;var  maxUp=0;var maxDown=0;
+          if(fla===0){
+          var req = JSON.parse(S);
+          minR = 0;
+          maxR = 0;
+        
           for (var i = 0; i < req.length; i++) {
             ratings.push(parseInt(req[i].rating));
             dates.push(req[i].name);
@@ -176,13 +208,17 @@ function SingleUser() {
               minR = Math.min(minR, ratings[i]);
               maxR = Math.max(maxR, ratings[i]);
             }
-          }
+          }}
+		     console.log(verdicts);
           Best.push(best);
           Worst.push(worst);
           maxup.push(maxUp);
           maxdown.push(maxDown);
           setStats(verdicts);
-          Setcontests([req.length]);
+          SetAverage(avg);
+          if(fla===0){
+          Setcontests([req.length]);}
+          else {Setcontests([0]);}
           setmaxup(maxup);
           setMaxdown(maxdown);
           SetBestrank(Best);
@@ -192,7 +228,8 @@ function SingleUser() {
           Setimage(Pic);
           SetAbout(abt);
           SetMinRating(minR);
-          SetMaxRating(maxR);
+          SetMaxRating(maxR);   
+		  
         }
       }
     );
@@ -202,7 +239,7 @@ function SingleUser() {
     console.log(user);
     var headers = {
       Accept: "application/json",
-      Authorization: "Bearer 2bc6d9c7ffacba5be64f8f0702c5a8b1932cc348",
+      Authorization: "Bearer c4d299bddc8ffe84be4627dc9fca2c92733162fd",
     };
     var UserName = user;
     console.log(user);
@@ -245,7 +282,7 @@ function SingleUser() {
                 .partiallySolvedSubmissions
             );
             var m1 = new Map();
-            var avg = 0;
+            //var avg = 0;
             var PartialCodes = [];
             var solved = 0;
             var tried = 0;
@@ -256,8 +293,8 @@ function SingleUser() {
             x = res.data.result.data.content.problemStats.partiallySolved;
             y = res.data.result.data.content.problemStats.solved;
             z = res.data.result.data.content.problemStats.attempted;
-            avg =
-              res.data.result.data.content.submissionStats.submittedSolutions;
+            // avg =
+            //   res.data.result.data.content.submissionStats.submittedSolutions;
             // console.log(avg);
             for (const item in x) {
               PartiallySolved = PartiallySolved + x[item].length;
@@ -284,10 +321,10 @@ function SingleUser() {
 
             solved = solved - PartiallySolved;
             tried = solved + unsolved + PartiallySolved;
-            if (avg) {
-              avg = avg / solved;
-            }
-            avg = Math.round(avg * 100) / 100;
+            // if (avg) {
+            //   avg = avg / solved;
+            // }
+            // avg = Math.round(avg * 100) / 100;
 
             // setStats(sol);
             Settried(tried);
@@ -296,7 +333,7 @@ function SingleUser() {
             setpartialLinks(PartialCodes);
             setUnsolvedLinks(Unsolved);
             setPartial(PartiallySolved);
-            SetAverage(avg);
+            //SetAverage(avg);
             SetName(Name);
             Setorg(Org);
             SetWork(Occu);
@@ -368,7 +405,7 @@ function SingleUser() {
             </Col>
             <Col>
               <div>
-                <DoughnutChart data={stats} user={user}/>
+                <DoughnutChart data={stats} user={user} />
               </div>
               <div>
                 <RatingGraph date={DATE} Rating={rating} user={user} />
