@@ -11,7 +11,7 @@ function SingleUserForm(props) {
     const enteredUsername = usernameRef.current.value;
     //console.log(props.OnSubmit);
     props.OnSubmit(enteredUsername);
-    console.log(enteredUsername);
+   // console.log(enteredUsername);
     //  setUserName(enteredUsername);
   }
 

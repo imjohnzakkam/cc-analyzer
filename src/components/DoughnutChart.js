@@ -9,7 +9,7 @@ function DoughnutChart(props) {
     "Compiliation Error",
     "Partially Accepted",
   ];
-  console.log(props.data);
+ 
   var x = 0;
   for (var i = 0; i < props.data.length; i++) x += props.data[i];
   if (x === 0) {

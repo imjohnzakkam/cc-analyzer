@@ -1,5 +1,5 @@
 export default function ProfileCard(props) {
-	console.log(props.img);
+	//console.log(props.img);
 	var pic = props.img;
   if (props.img.length === 0) {
     pic =

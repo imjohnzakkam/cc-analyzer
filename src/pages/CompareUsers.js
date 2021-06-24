@@ -8,12 +8,12 @@ import MixedRatingGraph from "../components/MixedRatingGraph";
 import ProfileCard from "../components/ProfileCard";
 import StatsCard from "../components/StatsCard";
 import UnsolvedProbs from "../components/UnsolvedProbs";
-// import Alert from "../components/Alert";
 
 const request = require("request");
 const cheerio = require("cheerio");
 
-function CompareUsers() {
+function CompareUsers(props) {
+  //console.log(props.TOKEN);
   const [User1, Setuser1] = useState(null);
   const [User2, Setuser2] = useState(null);
   const [stats1, setStats1] = useState([]);
@@ -146,6 +146,7 @@ function CompareUsers() {
         UserName,
       (error, response, html) => {
         if (!error && response.statusCode === 200) {
+          var fla = 0;
           var front = "https://s3.amazonaws.com/codechef_shared";
           var $ = cheerio.load(html);
           var Str = $("body");
@@ -157,6 +158,10 @@ function CompareUsers() {
           let index = Str.indexOf("all_rating");
           Str = Str.slice(index);
           let index1 = Str.indexOf("[{");
+          let id1 = Str.indexOf("[]");
+          if (id1 < index1) {
+            fla = 1;
+          }
           index = Str.indexOf("}]");
           var S = Str.slice(index1, index + 2);
 
@@ -184,48 +189,75 @@ function CompareUsers() {
             abtMe = abtStr.indexOf("</");
             abt = abtStr.slice(0, abtMe);
           }
-          var verdicts = [];
+          var verdict_cnt = [],
+            names = [];
           var cby = pieChart.indexOf("colorByPoint:");
           pieChart = pieChart.slice(cby);
           cby = pieChart.indexOf("data");
           pieChart = pieChart.slice(cby);
           cby = pieChart.indexOf("[");
           pieChart = pieChart.slice(cby);
-          var cby1 = pieChart.indexOf("sliced");
-          pieChart = pieChart.slice(0, cby1 - 1);
-          pieChart = pieChart + "}]";
+          var avg = 0;
           for (var p = 0; p < 6; p++) {
-            cby1 = pieChart.indexOf("y:");
+            var cby3 = pieChart.indexOf("name:");
+            pieChart = pieChart.slice(cby3);
+            var count1 = "";
+            var cby4 = pieChart.indexOf(",");
+            count1 = pieChart.slice(6, cby4 - 1);
+            names.push(count1);
+            var cby1 = pieChart.indexOf("y:");
             pieChart = pieChart.slice(cby1);
             var count = "";
             var cby2 = pieChart.indexOf(",");
             count = pieChart.slice(2, cby2);
-            verdicts.push(parseInt(count));
+            verdict_cnt.push(parseInt(count));
+            avg = avg + parseInt(count);
             pieChart = pieChart.slice(cby2 + 1);
           }
-          verdicts.reverse();
-          var req = JSON.parse(S);
+          var verdicts = [0, 0, 0, 0, 0, 0];
+          for (var j = 0; j < 6; j++) {
+            if (names[j] === "solutions_partially_accepted") {
+              verdicts[5] = verdict_cnt[j];
+            } else if (names[j] === "time_limit_exceeded") {
+              verdicts[2] = verdict_cnt[j];
+            } else if (names[j] === "compile_error") {
+              verdicts[4] = verdict_cnt[j];
+            } else if (names[j] === "runtime_error") {
+              verdicts[3] = verdict_cnt[j];
+            } else if (names[j] === "wrong_answers") {
+              verdicts[1] = verdict_cnt[j];
+            } else verdicts[0] = verdict_cnt[j];
+          }
+          avg = avg / verdicts[0];
+          avg = Math.round(avg * 100) / 100;
           var minR = 0;
           var maxR = 0;
-          var best, worst, maxUp, maxDown;
-          for (var i = 0; i < req.length; i++) {
-            ratings.push(parseInt(req[i].rating));
-            dates.push(req[i].name);
-            ranks.push(parseInt(req[i].rank));
-            if (i === 0) {
-              best = req[i].rank;
-              worst = req[i].rank;
-              maxUp = 0;
-              maxDown = 0;
-              minR = req[i].rating;
-              maxR = req[i].rating;
-            } else {
-              best = Math.min(best, ranks[i]);
-              worst = Math.max(worst, ranks[i]);
-              maxUp = Math.max(maxUp, ratings[i] - ratings[i - 1]);
-              maxDown = Math.max(maxDown, ratings[i - 1] - ratings[i]);
-              minR = Math.min(minR, ratings[i]);
-              maxR = Math.max(maxR, ratings[i]);
+          var best = 0;
+          var worst = 0;
+          var maxUp = 0;
+          var maxDown = 0;
+          if (fla === 0) {
+            var req = JSON.parse(S);
+
+            for (var i = 0; i < req.length; i++) {
+              ratings.push(parseInt(req[i].rating));
+              dates.push(req[i].name);
+              ranks.push(parseInt(req[i].rank));
+              if (i === 0) {
+                best = req[i].rank;
+                worst = req[i].rank;
+                maxUp = 0;
+                maxDown = 0;
+                minR = req[i].rating;
+                maxR = req[i].rating;
+              } else {
+                best = Math.min(best, ranks[i]);
+                worst = Math.max(worst, ranks[i]);
+                maxUp = Math.max(maxUp, ratings[i] - ratings[i - 1]);
+                maxDown = Math.max(maxDown, ratings[i - 1] - ratings[i]);
+                minR = Math.min(minR, ratings[i]);
+                maxR = Math.max(maxR, ratings[i]);
+              }
             }
           }
           Best.push(best);
@@ -233,8 +265,13 @@ function CompareUsers() {
           maxup.push(maxUp);
           maxdown.push(maxDown);
           if (UserName === User1) {
+            SetAverage1(avg);
             setStats1(verdicts);
-            Setcontests1([req.length]);
+            if (fla === 0) {
+              Setcontests1([req.length]);
+            } else {
+              Setcontests1([0]);
+            }
             setmaxup1(maxup);
             setMaxdown1(maxdown);
             SetBestrank1(Best);
@@ -246,8 +283,13 @@ function CompareUsers() {
             SetMinRating1(minR);
             SetMaxRating1(maxR);
           } else {
+            SetAverage2(avg);
             setStats2(verdicts);
-            Setcontests2([req.length]);
+            if (fla === 0) {
+              Setcontests2([req.length]);
+            } else {
+              Setcontests2([0]);
+            }
             setmaxup2(maxup);
             setMaxdown2(maxdown);
             SetBestrank2(Best);
@@ -264,10 +306,9 @@ function CompareUsers() {
     );
   }
   useEffect(() => {
-    // console.log(User1);
     var headers = {
       Accept: "application/json",
-      Authorization: "Bearer 33ef3aeb7e6cd066230006def80f65e980a31135",
+      Authorization: "Bearer " + props.TOKEN,
     };
     var UserName = User1;
 
@@ -294,7 +335,7 @@ function CompareUsers() {
 
             var curr = res.data.result.data.content.ratings.allContest;
             var m1 = new Map();
-            var avg = 0;
+
             var PartialCodes = [];
             var solved = 0;
             var tried = 0;
@@ -304,8 +345,7 @@ function CompareUsers() {
             x = res.data.result.data.content.problemStats.partiallySolved;
             y = res.data.result.data.content.problemStats.solved;
             z = res.data.result.data.content.problemStats.attempted;
-            avg =
-              res.data.result.data.content.submissionStats.submittedSolutions;
+
             for (const item in x) {
               PartiallySolved = PartiallySolved + x[item].length;
               for (var i = 0; i < x[item].length; i++) {
@@ -331,10 +371,10 @@ function CompareUsers() {
 
             solved = solved - PartiallySolved;
             tried = solved + unsolved + PartiallySolved;
-            if (avg) {
-              avg = avg / solved;
-            }
-            avg = Math.round(avg * 100) / 100;
+            // if (avg) {
+            //   avg = avg / solved;
+            // }
+            // avg = Math.round(avg * 100) / 100;
             // setStats1(sol);
             Settried1(tried);
             setSolved1(solved);
@@ -342,7 +382,7 @@ function CompareUsers() {
             setpartialLinks1(PartialCodes);
             setUnsolvedLinks1(Unsolved);
             setPartial1(PartiallySolved);
-            SetAverage1(avg);
+            // SetAverage1(avg);
             SetName1(Name);
             Setorg1(Org);
             SetWork1(Occu);
@@ -353,27 +393,17 @@ function CompareUsers() {
             setCountryrank1(cntry_rank);
             Setusererror((prevState) => prevState + 1);
             setCurrRating1(curr);
-            console.log("Wait");
-            //console.log(username_error);
-          } else {
-            //    console.log("Hello");
-            //   setJohn(1);
-            //   console.log(john,"hell")
+          } else {            
             alert("Enter correct Codechef username for user 1");
           }
         },
         (error) => {
-          //   console.log("Hello1");
-          //   setJohn(1);
-          //   console.log(john,"hell1")
-          //   alert("Enter correct Codechef username for user 1");
+         
           console.log(error);
         }
       );
-    // console.log(User1);
 
     UserName = User2;
-    //  console.log(User2);
     url =
       "https://api.codechef.com/users/" +
       UserName +
@@ -395,25 +425,7 @@ function CompareUsers() {
             var gb_rank =
               res.data.result.data.content.rankings.allContestRanking.global;
             var cntry_rank =
-              res.data.result.data.content.rankings.allContestRanking.country;
-            // var sol = [];
-            // sol.push(
-            //   res.data.result.data.content.submissionStats.acceptedSubmissions
-            // );
-            // sol.push(
-            //   res.data.result.data.content.submissionStats.wrongSubmissions
-            // );
-            // sol.push(
-            //   res.data.result.data.content.submissionStats.timeLimitExceed
-            // );
-            // sol.push(res.data.result.data.content.submissionStats.runTimeError);
-            // sol.push(
-            //   res.data.result.data.content.submissionStats.compilationError
-            // );
-            // sol.push(
-            //   res.data.result.data.content.submissionStats
-            //     .partiallySolvedSubmissions
-            // );
+              res.data.result.data.content.rankings.allContestRanking.country;            
             var curr = res.data.result.data.content.ratings.allContest;
             var m1 = new Map();
             var avg = 0;
@@ -450,21 +462,18 @@ function CompareUsers() {
                 }
               }
             }
-            //   console.log("HelloP");
             solved = solved - PartiallySolved;
             tried = solved + unsolved + PartiallySolved;
             if (avg) {
               avg = avg / solved;
             }
             avg = Math.round(avg * 100) / 100;
-            // setStats2(sol);
             Settried2(tried);
             setSolved2(solved);
             setUnsolved2(unsolved);
             setpartialLinks2(PartialCodes);
             setUnsolvedLinks2(Unsolved);
             setPartial2(PartiallySolved);
-            SetAverage2(avg);
             SetName2(Name);
             Setorg2(Org);
             SetWork2(Occu);
@@ -475,10 +484,8 @@ function CompareUsers() {
             setCountryrank2(cntry_rank);
             Setusererror((prevState) => prevState + 1);
             setCurrRating2(curr);
-            console.log("Wait 1");
-            // console.log(username_error);
+            
           } else {
-            // Setcounter(2);
             Setusererror(0);
             alert("Enter correct Codechef username for user2");
           }
@@ -488,15 +495,13 @@ function CompareUsers() {
         }
       );
 
-    // console.log(User2);
     getRatingData(User2);
   }, [counter]);
   return (
     <>
       <DoubleUserForm OnSubmit={loader} />
-      {console.log(username_error)}
       {User1 && User2 && username_error === 2 ? (
-        <>          
+        <>
           <div className="text-center grid grid-cols-2 divide-x-2 pt-4">
             <div>
               <ProfileCard

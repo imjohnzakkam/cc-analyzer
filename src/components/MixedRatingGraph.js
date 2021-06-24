@@ -28,7 +28,7 @@ export default function MixedRatingGraph(props) {
           <div className="text-center pt-3 pb-2 text-gray-900 uppercase font-black">
             Common Contests Graph
           </div>
-          <div className="text-center place-items-center font-medium">
+          <div className="text-center text-red-500 place-items-center font-semibold pb-3">
             No common contests for both users ;(
           </div>
         </div>

@@ -6,8 +6,7 @@ import React from "react";
 function HomePage() {
   return (
     <>
-      <SingleUserForm />
-      <ClistTop5 />
+      
     </>
   );
 }

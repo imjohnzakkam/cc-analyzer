@@ -6,7 +6,7 @@ import logo from '../../images/logo.png';
 const navigation = [
   { name: "Home", href: "/", current: false },
   { name: "Compare", href: "/compare", current: false },
-  { name: "Feedback", href: "/feedback", current: false }
+  { name: "Info", href: "/info", current: false }
 ];
 
 function classNames(...classes) {

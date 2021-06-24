@@ -13,7 +13,8 @@ import UnsolvedProbs from "../components/UnsolvedProbs";
 const request = require("request");
 const cheerio = require("cheerio");
 
-function SingleUser() {
+function SingleUser(props) {
+  //console.log(props.TOKEN);
   const [stats, setStats] = useState([]);
   const [user, Setuser] = useState(null);
   const [DATE, setDATE] = useState([]);
@@ -92,7 +93,7 @@ function SingleUser() {
         UserName,
       (error, response, html) => {
         if (!error && response.statusCode === 200) {
-          var fla=0;
+          var fla = 0;
           var front = "https://s3.amazonaws.com/codechef_shared";
           var $ = cheerio.load(html);
           var Str = $("body");
@@ -102,24 +103,23 @@ function SingleUser() {
           var abtStr = Str;
           var pieChart = Str;
           let index = Str.indexOf("all_rating");
-         // console.log(index);
+
           Str = Str.slice(index);
           let index1 = Str.indexOf("[{");
-          let id1=Str.indexOf("[]");
-          if(id1<index1){
-            fla=1;
+          let id1 = Str.indexOf("[]");
+          if (id1 < index1) {
+            fla = 1;
           }
           index = Str.indexOf("}]");
           var S = Str.slice(index1, index + 2);
 
           let sitesvar = Str1.indexOf("/sites/d");
           Str1 = Str1.slice(sitesvar);
-          console.log(sitesvar);
+    
           let img_index = Str1.indexOf("jpg");
           if (img_index === -1) {
             img_index = Str1.indexOf("png");
           }
-          console.log(img_index, "img test");
           var back = Str1.slice(0, img_index + 3);
           var Pic = front + back;
           if (img_index === -1) {
@@ -127,9 +127,9 @@ function SingleUser() {
               "https://cdn.codechef.com/sites/all/themes/abessive/images/user_default_thumb.jpg";
           }
           Pic = Pic.toString();
-          console.log(Pic, back);
+       
           let abtMe = abtStr.indexOf("About Me:");
-          console.log(abtMe);
+    
           var abt;
           if (abtMe === -1) {
             abt = "";
@@ -138,7 +138,7 @@ function SingleUser() {
             abtMe = abtStr.indexOf("</");
             abt = abtStr.slice(0, abtMe);
           }
-          console.log(abt);
+         
           var verdict_cnt = [],
             names = [];
           var cby = pieChart.indexOf("colorByPoint:");
@@ -178,47 +178,52 @@ function SingleUser() {
               verdicts[1] = verdict_cnt[j];
             } else verdicts[0] = verdict_cnt[j];
           }
-          avg=avg/verdicts[0];
+          avg = avg / verdicts[0];
           avg = Math.round(avg * 100) / 100;
           var minR = 0;
           var maxR = 0;
-          var best=0; 
-          var worst=0;var  maxUp=0;var maxDown=0;
-          if(fla===0){
-          var req = JSON.parse(S);
-          minR = 0;
-          maxR = 0;
-        
-          for (var i = 0; i < req.length; i++) {
-            ratings.push(parseInt(req[i].rating));
-            dates.push(req[i].name);
-            ranks.push(parseInt(req[i].rank));
-            if (i === 0) {
-              best = req[i].rank;
-              worst = req[i].rank;
-              maxUp = 0;
-              maxDown = 0;
-              minR = req[i].rating;
-              maxR = req[i].rating;
-            } else {
-              best = Math.min(best, ranks[i]);
-              worst = Math.max(worst, ranks[i]);
-              maxUp = Math.max(maxUp, ratings[i] - ratings[i - 1]);
-              maxDown = Math.max(maxDown, ratings[i - 1] - ratings[i]);
-              minR = Math.min(minR, ratings[i]);
-              maxR = Math.max(maxR, ratings[i]);
+          var best = 0;
+          var worst = 0;
+          var maxUp = 0;
+          var maxDown = 0;
+          if (fla === 0) {
+            var req = JSON.parse(S);
+            minR = 0;
+            maxR = 0;
+
+            for (var i = 0; i < req.length; i++) {
+              ratings.push(parseInt(req[i].rating));
+              dates.push(req[i].name);
+              ranks.push(parseInt(req[i].rank));
+              if (i === 0) {
+                best = req[i].rank;
+                worst = req[i].rank;
+                maxUp = 0;
+                maxDown = 0;
+                minR = req[i].rating;
+                maxR = req[i].rating;
+              } else {
+                best = Math.min(best, ranks[i]);
+                worst = Math.max(worst, ranks[i]);
+                maxUp = Math.max(maxUp, ratings[i] - ratings[i - 1]);
+                maxDown = Math.max(maxDown, ratings[i - 1] - ratings[i]);
+                minR = Math.min(minR, ratings[i]);
+                maxR = Math.max(maxR, ratings[i]);
+              }
             }
-          }}
-		     console.log(verdicts);
+          }
+       
           Best.push(best);
           Worst.push(worst);
           maxup.push(maxUp);
           maxdown.push(maxDown);
           setStats(verdicts);
           SetAverage(avg);
-          if(fla===0){
-          Setcontests([req.length]);}
-          else {Setcontests([0]);}
+          if (fla === 0) {
+            Setcontests([req.length]);
+          } else {
+            Setcontests([0]);
+          }
           setmaxup(maxup);
           setMaxdown(maxdown);
           SetBestrank(Best);
@@ -228,21 +233,20 @@ function SingleUser() {
           Setimage(Pic);
           SetAbout(abt);
           SetMinRating(minR);
-          SetMaxRating(maxR);   
-		  
+          SetMaxRating(maxR);
         }
       }
     );
     return [ratings, dates, Best, Worst];
   }
   useEffect(() => {
-    console.log(user);
+    
     var headers = {
       Accept: "application/json",
-      Authorization: "Bearer c4d299bddc8ffe84be4627dc9fca2c92733162fd",
+      Authorization: "Bearer " + props.TOKEN,
     };
     var UserName = user;
-    console.log(user);
+   
     const url =
       "https://api.codechef.com/users/" +
       UserName +
@@ -252,6 +256,7 @@ function SingleUser() {
       .then((res) => res)
       .then(
         (res) => {
+          console.log("Hi");
           if (res.data.result.data.code === 9001) {
             var Name = res.data.result.data.content.fullname;
             var Occu = res.data.result.data.content.occupation;
@@ -282,7 +287,7 @@ function SingleUser() {
                 .partiallySolvedSubmissions
             );
             var m1 = new Map();
-            //var avg = 0;
+          
             var PartialCodes = [];
             var solved = 0;
             var tried = 0;
@@ -293,9 +298,7 @@ function SingleUser() {
             x = res.data.result.data.content.problemStats.partiallySolved;
             y = res.data.result.data.content.problemStats.solved;
             z = res.data.result.data.content.problemStats.attempted;
-            // avg =
-            //   res.data.result.data.content.submissionStats.submittedSolutions;
-            // console.log(avg);
+       
             for (const item in x) {
               PartiallySolved = PartiallySolved + x[item].length;
               for (var i = 0; i < x[item].length; i++) {
@@ -345,10 +348,8 @@ function SingleUser() {
             Setcounter(2);
             setCurrRating(curr);
           } else {
-            // Setcounter(2);
             Setuser(null);
             alert("Enter correct Codechef username");
-            // <Alert />
           }
         },
         (error) => {
@@ -357,9 +358,8 @@ function SingleUser() {
       );
     var x, y, a, b;
     [x, y, a, b] = getRatingData(user);
-    console.log(x, y, a, b);
-    console.log(user);
-  }, [user, counter]);
+ 
+  }, [counter]);
 
   return (
     <>

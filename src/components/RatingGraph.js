@@ -1,7 +1,7 @@
 import { Line } from "react-chartjs-2";
 
 export default function RatingGraph(props) {
-  console.log(props.Rating);
+  //console.log(props.Rating);
   if (props.Rating.length === 0) {
     return (
       <div className="pt-5">
