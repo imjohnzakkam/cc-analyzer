@@ -46,10 +46,11 @@ function SingleUser(props) {
   const [curr_rating, setCurrRating] = useState(0);
   const [maxRating, SetMaxRating] = useState(0);
   const [minRating, SetMinRating] = useState(0);
-
+  const [X,SetX]=useState(null);
   function loader(enteredUsername) {
     Setuser("");
     Setuser(enteredUsername);
+    SetX(enteredUsername);
     setStats([]);
     Setrating([]);
     SetBestrank([0]);
@@ -246,8 +247,8 @@ function SingleUser(props) {
       Authorization: "Bearer " + props.TOKEN,
     };
     var UserName = user;
-   
-    const url =
+   if(X!==null){
+         const url =
       "https://api.codechef.com/users/" +
       UserName +
       "?fields=username%2C%20fullname%2C%20country%2C%20state%2C%20city%2C%20rankings%2C%20ratings%2C%20occupation%2C%20language%2C%20organization%2C%20problemStats%2C%20submissionStats";
@@ -355,7 +356,8 @@ function SingleUser(props) {
         (error) => {
           console.log(error);
         }
-      );
+      );}
+      SetX(null);
     var x, y, a, b;
     [x, y, a, b] = getRatingData(user);
  

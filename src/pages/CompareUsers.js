@@ -74,10 +74,12 @@ function CompareUsers(props) {
   const [minRating1, SetMinRating1] = useState(0);
   const [maxRating2, SetMaxRating2] = useState(0);
   const [minRating2, SetMinRating2] = useState(0);
-
+  const [X1,SetX1]=useState(null);
+  const [X2,SetX2]=useState(null);
   function loader(user1, user2) {
     Setuser1(user1);
     setStats1([]);
+    SetX1(user1);
     Setrating1([]);
     SetBestrank1([0]);
     Setworstrank1([0]);
@@ -102,6 +104,7 @@ function CompareUsers(props) {
     setGlobalrank1(0);
     setCountryrank1(0);
     Setuser2(user2);
+    SetX2(user2);
     setStats2([]);
     Setrating2([]);
     setCurrRating1(0);
@@ -311,16 +314,18 @@ function CompareUsers(props) {
       Authorization: "Bearer " + props.TOKEN,
     };
     var UserName = User1;
-
+    
     var url =
       "https://api.codechef.com/users/" +
       UserName +
       "?fields=username%2C%20fullname%2C%20country%2C%20state%2C%20city%2C%20rankings%2C%20ratings%2C%20occupation%2C%20language%2C%20organization%2C%20problemStats%2C%20submissionStats";
-    axios
+      if(X1!==null){ 
+      axios
       .get(url, { headers: headers })
       .then((res) => res)
       .then(
         (res) => {
+          console.log("Hi1");
           if (res.data.result.data.code === 9001) {
             var Name = res.data.result.data.content.fullname;
             var Occu = res.data.result.data.content.occupation;
@@ -402,20 +407,23 @@ function CompareUsers(props) {
           console.log(error);
         }
       );
-
-    UserName = User2;
-    url =
-      "https://api.codechef.com/users/" +
-      UserName +
-      "?fields=username%2C%20fullname%2C%20country%2C%20state%2C%20city%2C%20rankings%2C%20ratings%2C%20occupation%2C%20language%2C%20organization%2C%20problemStats%2C%20submissionStats";
-
+      
+ 
     getRatingData(User1);
+      }
+      UserName = User2;
+      url =
+        "https://api.codechef.com/users/" +
+        UserName +
+        "?fields=username%2C%20fullname%2C%20country%2C%20state%2C%20city%2C%20rankings%2C%20ratings%2C%20occupation%2C%20language%2C%20organization%2C%20problemStats%2C%20submissionStats";
+  if(X2!==null && X1!==null){
     axios
       .get(url, { headers: headers })
       .then((res) => res)
       .then(
         (res) => {
           if (res.data.result.data.code === 9001) {
+            console.log("Hi2");
             var Name = res.data.result.data.content.fullname;
             var Occu = res.data.result.data.content.occupation;
             var Org = res.data.result.data.content.organization;
@@ -495,7 +503,9 @@ function CompareUsers(props) {
         }
       );
 
-    getRatingData(User2);
+    getRatingData(User2);}
+
+    SetX1(null);SetX2(null);
   }, [counter]);
   return (
     <>
