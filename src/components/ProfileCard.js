@@ -1,6 +1,6 @@
 export default function ProfileCard(props) {
-	//console.log(props.img);
-	var pic = props.img;
+  //console.log(props.img);
+  var pic = props.img;
   if (props.img.length === 0) {
     pic =
       "https://cdn.codechef.com/sites/all/themes/abessive/images/user_default_thumb.jpg";
@@ -11,16 +11,18 @@ export default function ProfileCard(props) {
         <div className="text-center pt-3 pb-2 text-gray-900 uppercase font-black">
           Profile Card
         </div>
-        <div class="md:flex flex items-center pb-3 pr-3 pl-3 grid grid-cols-2 divide-x-2">
+        <div class="md:flex flex items-center justify-center pb-3 pr-3 pl-3 grid grid-cols-2 divide-x-2">
           <div class="md:flex-shrink-0 pr-7">
             <img
               class="h-48 w-full object-cover md:w-48 inline-block"
               src={pic}
               alt="Profile pic"
             />
-            <div className="text-center text-blue-600 pt-1">current rating - {props.curr_rating}</div>
+            <div className="text-center text-blue-600 pt-1">
+              current rating - {props.curr_rating}
+            </div>
           </div>
-          <div class="pb-4 pr-2 pl-4 pt-3 text-center">
+          <div class="pb-4 pr-2 pl-4 pt-3 text-center items-center">
             <div class="tracking-wide text-sm text-blue-500 font-medium">
               Username :
               <a

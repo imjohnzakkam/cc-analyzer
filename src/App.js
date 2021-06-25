@@ -3,7 +3,7 @@ import {useEffect } from "react";
 
 import SingleUser from "./pages/SingleUser";
 import CompareUsers from "./pages/CompareUsers";
-import Info from "./pages/Info";
+import AboutUs from "./pages/AboutUs";
 import createAuthRefreshInterceptor from 'axios-auth-refresh';
 import Layout from "./components/layout/Layout";
 
@@ -25,13 +25,14 @@ function App() {
   var url = "https://api.codechef.com/oauth/token";
 
   useEffect(() => {
+	localStorage.setItem('token', 'ff2389e8402cee0cf3b9ed8b58b584ae730ad334');
     const refreshAuthLogic = failedRequest => axios.post(url, data, { headers: headers }).then(tokenRefreshResponse => {	
-    localStorage.setItem('token', tokenRefreshResponse.data.result.data.access_token);
+    // localStorage.removeItem('token');
+	localStorage.setItem('token', tokenRefreshResponse.data.result.data.access_token);
     console.log(localStorage.getItem('token'),"worst");
     failedRequest.response.config.headers['Authorization'] = 'Bearer ' + tokenRefreshResponse.data.result.data.access_token;
     return Promise.resolve();
 });
-
 
  createAuthRefreshInterceptor(axios, refreshAuthLogic);
 
@@ -42,13 +43,13 @@ function App() {
         <Layout>
           <Switch>
             <Route path="/" exact>
-              <SingleUser TOKEN={localStorage.getItem('token')} />
+				<SingleUser TOKEN={localStorage.getItem('token')} />              
             </Route>
             <Route path="/compare">
-              <CompareUsers TOKEN={localStorage.getItem('token')} />
+				<CompareUsers TOKEN={localStorage.getItem('token')} />				
             </Route>
-            <Route path="/info">
-              <Info TOKEN={localStorage.getItem('token')} />
+            <Route path="/about_us">
+              <AboutUs TOKEN={localStorage.getItem('token')} />
             </Route>
           </Switch>
         </Layout>

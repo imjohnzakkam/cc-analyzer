@@ -15,7 +15,7 @@ function DoughnutChart(props) {
   if (x === 0) {
     lbs = [];
   }
-  if (props.data.length === 0) {
+  if (lbs.length === 0) {
     return (
       <div className="pt-5">
         <div class="max-w-md mx-auto bg-white rounded-md shadow-md overflow-hidden md:max-w-2xl w-auto font-inter font-bold">

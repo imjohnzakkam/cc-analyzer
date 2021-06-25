@@ -14,7 +14,7 @@ const request = require("request");
 const cheerio = require("cheerio");
 
 function SingleUser(props) {
-  //console.log(props.TOKEN);
+  console.log(props.TOKEN);
   const [stats, setStats] = useState([]);
   const [user, Setuser] = useState(null);
   const [DATE, setDATE] = useState([]);
@@ -46,7 +46,7 @@ function SingleUser(props) {
   const [curr_rating, setCurrRating] = useState(0);
   const [maxRating, SetMaxRating] = useState(0);
   const [minRating, SetMinRating] = useState(0);
-  const [X,SetX]=useState(null);
+  const [X, SetX] = useState(null);
   function loader(enteredUsername) {
     Setuser("");
     Setuser(enteredUsername);
@@ -116,7 +116,7 @@ function SingleUser(props) {
 
           let sitesvar = Str1.indexOf("/sites/d");
           Str1 = Str1.slice(sitesvar);
-    
+
           let img_index = Str1.indexOf("jpg");
           if (img_index === -1) {
             img_index = Str1.indexOf("png");
@@ -128,9 +128,9 @@ function SingleUser(props) {
               "https://cdn.codechef.com/sites/all/themes/abessive/images/user_default_thumb.jpg";
           }
           Pic = Pic.toString();
-       
+
           let abtMe = abtStr.indexOf("About Me:");
-    
+
           var abt;
           if (abtMe === -1) {
             abt = "";
@@ -139,7 +139,7 @@ function SingleUser(props) {
             abtMe = abtStr.indexOf("</");
             abt = abtStr.slice(0, abtMe);
           }
-         
+
           var verdict_cnt = [],
             names = [];
           var cby = pieChart.indexOf("colorByPoint:");
@@ -213,7 +213,7 @@ function SingleUser(props) {
               }
             }
           }
-       
+
           Best.push(best);
           Worst.push(worst);
           maxup.push(maxUp);
@@ -241,126 +241,127 @@ function SingleUser(props) {
     return [ratings, dates, Best, Worst];
   }
   useEffect(() => {
-    
     var headers = {
       Accept: "application/json",
       Authorization: "Bearer " + props.TOKEN,
     };
     var UserName = user;
-   if(X!==null){
-         const url =
-      "https://api.codechef.com/users/" +
-      UserName +
-      "?fields=username%2C%20fullname%2C%20country%2C%20state%2C%20city%2C%20rankings%2C%20ratings%2C%20occupation%2C%20language%2C%20organization%2C%20problemStats%2C%20submissionStats";
-    axios
-      .get(url, { headers: headers })
-      .then((res) => res)
-      .then(
-        (res) => {
-          console.log("Hi");
-          if (res.data.result.data.code === 9001) {
-            var Name = res.data.result.data.content.fullname;
-            var Occu = res.data.result.data.content.occupation;
-            var Org = res.data.result.data.content.organization;
-            var Country = res.data.result.data.content.country.name;
-            var userCity = res.data.result.data.content.city.name;
-            var userState = res.data.result.data.content.state.name;
-            var gb_rank =
-              res.data.result.data.content.rankings.allContestRanking.global;
-            var cntry_rank =
-              res.data.result.data.content.rankings.allContestRanking.country;
-            var sol = [];
-            sol.push(
-              res.data.result.data.content.submissionStats.acceptedSubmissions
-            );
-            sol.push(
-              res.data.result.data.content.submissionStats.wrongSubmissions
-            );
-            sol.push(
-              res.data.result.data.content.submissionStats.timeLimitExceed
-            );
-            sol.push(res.data.result.data.content.submissionStats.runTimeError);
-            sol.push(
-              res.data.result.data.content.submissionStats.compilationError
-            );
-            sol.push(
-              res.data.result.data.content.submissionStats
-                .partiallySolvedSubmissions
-            );
-            var m1 = new Map();
-          
-            var PartialCodes = [];
-            var solved = 0;
-            var tried = 0;
-            var unsolved = 0;
-            var PartiallySolved = 0;
-            var x, y, z;
-            var curr = res.data.result.data.content.ratings.allContest;
-            x = res.data.result.data.content.problemStats.partiallySolved;
-            y = res.data.result.data.content.problemStats.solved;
-            z = res.data.result.data.content.problemStats.attempted;
-       
-            for (const item in x) {
-              PartiallySolved = PartiallySolved + x[item].length;
-              for (var i = 0; i < x[item].length; i++) {
-                PartialCodes.push(x[item][i]);
-              }
-            }
-            for (const item in y) {
-              solved = solved + y[item].length;
-              for (var j = 0; j < y[item].length; j++) {
-                m1.set(y[item][j], 1);
-              }
-            }
-            var Unsolved = [];
+    if (X !== null) {
+      const url =
+        "https://api.codechef.com/users/" +
+        UserName +
+        "?fields=username%2C%20fullname%2C%20country%2C%20state%2C%20city%2C%20rankings%2C%20ratings%2C%20occupation%2C%20language%2C%20organization%2C%20problemStats%2C%20submissionStats";
+      axios
+        .get(url, { headers: headers })
+        .then((res) => res)
+        .then(
+          (res) => {
+            console.log("Hi");
+            if (res.data.result.data.code === 9001) {
+              var Name = res.data.result.data.content.fullname;
+              var Occu = res.data.result.data.content.occupation;
+              var Org = res.data.result.data.content.organization;
+              var Country = res.data.result.data.content.country.name;
+              var userCity = res.data.result.data.content.city.name;
+              var userState = res.data.result.data.content.state.name;
+              var gb_rank =
+                res.data.result.data.content.rankings.allContestRanking.global;
+              var cntry_rank =
+                res.data.result.data.content.rankings.allContestRanking.country;
+              var sol = [];
+              sol.push(
+                res.data.result.data.content.submissionStats.acceptedSubmissions
+              );
+              sol.push(
+                res.data.result.data.content.submissionStats.wrongSubmissions
+              );
+              sol.push(
+                res.data.result.data.content.submissionStats.timeLimitExceed
+              );
+              sol.push(
+                res.data.result.data.content.submissionStats.runTimeError
+              );
+              sol.push(
+                res.data.result.data.content.submissionStats.compilationError
+              );
+              sol.push(
+                res.data.result.data.content.submissionStats
+                  .partiallySolvedSubmissions
+              );
+              var m1 = new Map();
 
-            for (const item in z) {
-              for (var k = 0; k < z[item].length; k++) {
-                if (!m1.get(z[item][k])) {
-                  Unsolved.push(z[item][k]);
-                  unsolved = unsolved + 1;
+              var PartialCodes = [];
+              var solved = 0;
+              var tried = 0;
+              var unsolved = 0;
+              var PartiallySolved = 0;
+              var x, y, z;
+              var curr = res.data.result.data.content.ratings.allContest;
+              x = res.data.result.data.content.problemStats.partiallySolved;
+              y = res.data.result.data.content.problemStats.solved;
+              z = res.data.result.data.content.problemStats.attempted;
+
+              for (const item in x) {
+                PartiallySolved = PartiallySolved + x[item].length;
+                for (var i = 0; i < x[item].length; i++) {
+                  PartialCodes.push(x[item][i]);
                 }
               }
+              for (const item in y) {
+                solved = solved + y[item].length;
+                for (var j = 0; j < y[item].length; j++) {
+                  m1.set(y[item][j], 1);
+                }
+              }
+              var Unsolved = [];
+
+              for (const item in z) {
+                for (var k = 0; k < z[item].length; k++) {
+                  if (!m1.get(z[item][k])) {
+                    Unsolved.push(z[item][k]);
+                    unsolved = unsolved + 1;
+                  }
+                }
+              }
+
+              solved = solved - PartiallySolved;
+              tried = solved + unsolved + PartiallySolved;
+              // if (avg) {
+              //   avg = avg / solved;
+              // }
+              // avg = Math.round(avg * 100) / 100;
+
+              // setStats(sol);
+              Settried(tried);
+              setSolved(solved);
+              setUnsolved(unsolved);
+              setpartialLinks(PartialCodes);
+              setUnsolvedLinks(Unsolved);
+              setPartial(PartiallySolved);
+              //SetAverage(avg);
+              SetName(Name);
+              Setorg(Org);
+              SetWork(Occu);
+              Setcity(userCity);
+              Setstate(userState);
+              setCountry(Country);
+              setGlobalrank(gb_rank);
+              setCountryrank(cntry_rank);
+              Setcounter(2);
+              setCurrRating(curr);
+            } else {
+              Setuser(null);
+              alert("Enter correct Codechef username");
             }
-
-            solved = solved - PartiallySolved;
-            tried = solved + unsolved + PartiallySolved;
-            // if (avg) {
-            //   avg = avg / solved;
-            // }
-            // avg = Math.round(avg * 100) / 100;
-
-            // setStats(sol);
-            Settried(tried);
-            setSolved(solved);
-            setUnsolved(unsolved);
-            setpartialLinks(PartialCodes);
-            setUnsolvedLinks(Unsolved);
-            setPartial(PartiallySolved);
-            //SetAverage(avg);
-            SetName(Name);
-            Setorg(Org);
-            SetWork(Occu);
-            Setcity(userCity);
-            Setstate(userState);
-            setCountry(Country);
-            setGlobalrank(gb_rank);
-            setCountryrank(cntry_rank);
-            Setcounter(2);
-            setCurrRating(curr);
-          } else {
-            Setuser(null);
-            alert("Enter correct Codechef username");
+          },
+          (error) => {
+            console.log(error);
           }
-        },
-        (error) => {
-          console.log(error);
-        }
-      );}
-      SetX(null);
-    var x, y, a, b;
-    [x, y, a, b] = getRatingData(user);
- 
+        );
+      var x, y, a, b;
+      [x, y, a, b] = getRatingData(user);
+    }
+    SetX(null);
   }, [counter]);
 
   return (

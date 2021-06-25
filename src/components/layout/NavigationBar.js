@@ -6,7 +6,7 @@ import logo from '../../images/logo.png';
 const navigation = [
   { name: "Home", href: "/", current: false },
   { name: "Compare", href: "/compare", current: false },
-  { name: "Info", href: "/info", current: false }
+  { name: "About Us", href: "/about_us", current: false }
 ];
 
 function classNames(...classes) {
@@ -15,7 +15,7 @@ function classNames(...classes) {
 
 export default function NavigatonBar() {
   return (	
-    <Disclosure as="nav" className="bg-gradient-to-r from-green-400 to-blue-500">
+    <Disclosure as="nav" className="bg-gradient-to-r from-blue-400 to-blue-400">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -40,7 +40,7 @@ export default function NavigatonBar() {
                   <img
                     className="hidden lg:block h-8 w-auto"
                     src={logo}
-                    alt="CC viz"
+                    alt="CC viz"					
                   />
                 </div>
                 <div className="hidden sm:block sm:ml-6">

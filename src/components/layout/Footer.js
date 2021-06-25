@@ -21,13 +21,23 @@ export default function Footer() {
       <div className="pt-5">
         <Disclosure
           as="nav"
-          className="bg-gradient-to-r from-green-400 to-blue-500"
+          className="bg-gradient-to-r from-blue-500 to-blue-500"
         >
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
             <div className="relative flex items-center justify-between h-16">
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-end">
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex pr-4">
+                    <div className="flex-shrink-0 flex items-center">
+                      <span className="font-semibold pr-2">page visits - </span>
+                      <img
+                        src="https://hitwebcounter.com/counter/counter.php?page=7829904&style=0006&nbdigits=6&type=page&initCount=0"
+                        title="Free Counter"
+                        Alt="web counter"
+                        border="0"
+						className="pr-2"
+                      />
+                    </div>
                     {navigation.map((item) => (
                       <>
                         <a
@@ -61,8 +71,7 @@ export default function Footer() {
                     alt="CC viz"
                   />
                 </div>
-              </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"></div>
+              </div>              
             </div>
           </div>
         </Disclosure>
