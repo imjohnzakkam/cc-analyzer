@@ -59,10 +59,10 @@ export default function Footer() {
                   </div>
                 </div>
                 <div className="flex-shrink-0 flex items-center">
-                  <h4 className="block lg:block h-4 w-auto">
+                  <h4 className="block lg:block h-4 w-auto font-semibold text-indigo-700">
                     CodeChef Analyzer
                   </h4>
-                  <h4 className="hidden lg:black h-4 w-auto">
+                  <h4 className="hidden lg:black h-4 w-auto font-semibold text-indigo-700">
                     CodeChef Analyzer
                   </h4>
                 </div>
