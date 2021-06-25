@@ -1,5 +1,4 @@
 import { Disclosure } from "@headlessui/react";
-import logo from "../../images/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
@@ -35,7 +34,7 @@ export default function Footer() {
                         title="Free Counter"
                         Alt="web counter"
                         border="0"
-						className="pr-2"
+                        className="pr-2"
                       />
                     </div>
                     {navigation.map((item) => (
@@ -60,18 +59,14 @@ export default function Footer() {
                   </div>
                 </div>
                 <div className="flex-shrink-0 flex items-center">
-                  <img
-                    className="block lg:hidden h-8 w-auto"
-                    src={logo}
-                    alt="CC viz"
-                  />
-                  <img
-                    className="hidden lg:block h-8 w-auto"
-                    src={logo}
-                    alt="CC viz"
-                  />
+                  <h4 className="block lg:block h-4 w-auto">
+                    CodeChef Analyzer
+                  </h4>
+                  <h4 className="hidden lg:black h-4 w-auto">
+                    CodeChef Analyzer
+                  </h4>
                 </div>
-              </div>              
+              </div>
             </div>
           </div>
         </Disclosure>

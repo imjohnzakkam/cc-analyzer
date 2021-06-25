@@ -355,8 +355,7 @@ function SingleUser(props) {
             console.log(error);
           }
         );
-      var x, y, a, b;
-      [x, y, a, b] = getRatingData(user);
+      getRatingData(user);
     }
     SetX(null);
   }, [counter]);

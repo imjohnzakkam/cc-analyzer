@@ -1,7 +1,6 @@
 import {Link} from 'react-router-dom';
 import { Disclosure } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import logo from '../../images/logo.png';
 
 const navigation = [
   { name: "Home", href: "/", current: false },
@@ -32,7 +31,7 @@ export default function NavigatonBar() {
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex-shrink-0 flex items-center">
-                  <img
+                  {/* <img
                     className="block lg:hidden h-8 w-auto"
                     src={logo}
                     alt="CC viz"
@@ -41,7 +40,13 @@ export default function NavigatonBar() {
                     className="hidden lg:block h-8 w-auto"
                     src={logo}
                     alt="CC viz"					
-                  />
+                  /> */}
+				  <h4 className="block lg:block h-4 w-auto">
+					  CodeChef Analyzer
+				  </h4>
+				  <h4 className="hidden lg:black h-4 w-auto">
+				  CodeChef Analyzer
+				  </h4>
                 </div>
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">
