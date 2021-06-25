@@ -1,14 +1,12 @@
-### CodeChef Analyzer 
+# CodeChef Analyzer 
 
-This is the code repository for the visualisation website for CodeChef Online Judge using CodeChef's API and Web scraping. The website is currently hosted here.
+This is the code repository for the visualisation website for [CodeChef Online Judge](https://codechef.com) using CodeChef's API and Web scraping. The website is currently hosted [here](https://cc-analyzer.netlify.app/).
 
 This project uses React JS, Tailwind CSS and Bootstrap.
 
-We are looking to add more features in the coming days.  
-
 ## Current Features 
 
-# Single User Features 
+### Single User Features 
 
 * Profile Card
 	* Username
@@ -32,7 +30,7 @@ We are looking to add more features in the coming days.
 * Rating graph
 * Unsolved Problems list + links
 
-# Compare Users Features 
+### Compare Users Features 
 
 * All the features for Single User 
 * Common contests rating graph
