@@ -116,17 +116,14 @@ function SingleUser(props) {
 
           let sitesvar = Str1.indexOf("/sites/d");
           Str1 = Str1.slice(sitesvar);
-
-          let img_index = Str1.indexOf("jpg");
-          if (img_index === -1) {
-            img_index = Str1.indexOf("png");
-          }
-          var back = Str1.slice(0, img_index + 3);
+          let img_index = Str1.indexOf("width");
+          console.log(img_index);
+          var back = Str1.slice(0, img_index - 2);
           var Pic = front + back;
-          if (img_index === -1) {
+          console.log(Pic, img_index);
+          if (img_index === -1)
             Pic =
               "https://cdn.codechef.com/sites/all/themes/abessive/images/user_default_thumb.jpg";
-          }
           Pic = Pic.toString();
 
           let abtMe = abtStr.indexOf("About Me:");
