@@ -1,9 +1,15 @@
 # CodeChef Analyzer 
 
+<div align="center">
+	An Open Source React based Web-App for all CodeChef users  
+</div>
+
+
 This is the code repository for the visualisation website for [CodeChef Online Judge](https://codechef.com) using CodeChef's API and Web scraping. The website is currently hosted [here](https://cc-analyzer.netlify.app/).
 
 This project uses React JS, Tailwind CSS and Bootstrap.
 
+![](https://img.shields.io/badge/build-passing-brightgreen) ![](https://img.shields.io/badge/contributors-2-brightgreen) ![](https://img.shields.io/badge/stars-11-important) ![](https://img.shields.io/badge/issues-0_open-inactive) ![](https://img.shields.io/badge/issues-0_closed-inactive) ![](https://img.shields.io/badge/open_pull_requests-0-red) ![](https://img.shields.io/badge/liscence-MIT-informational)
 ## Current Features 
 
 ### Single User Features 
